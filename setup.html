@@ -11,7 +11,7 @@
 
 
 
-<title>Website Name</title>
+<title>Setup</title>
 
 <script src="site_libs/header-attrs-2.10/header-attrs.js"></script>
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
@@ -283,29 +283,19 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore"><strong>Website Name</strong></h1>
+<h1 class="title toc-ignore">Setup</h1>
 
 </div>
 
 
-<div class="banner">
-<p>Banner text!</p>
-</div>
-<div id="about" class="section level3">
-<h3><strong>About</strong></h3>
-<p>This website was created with the OTTR_Template_Website template. This enables simpler creation of websites that have automated checks for broken URLs and spelling errors, as well as automated rendering of all html files. No need to worry about git conflicts for html files!</p>
-<p>Here is how you can include images in your website pages (this one is saved in <code>resources/images</code> to keep things tidy:</p>
-<p><img src="resources/images/example_image.png" title="Example image" alt="Example image" style="display: block; margin: auto;" /></p>
-<p>We will go through the following:</p>
-<ol style="list-style-type: decimal">
-<li>How to set up your repository to enable the GitHub actions of the template. (Setup tab)</li>
-<li>How to host your website using GitHub (Hosting tab)</li>
-<li>How to modify your website structure (Structure tab)</li>
-<li>How to change your website style (Style tab)</li>
-<li>More information about GitHub Actions (Git Actions tab)</li>
-</ol>
-<p>Click on each tab to learn more.</p>
-</div>
+<p>To enable the GitHub actions, your repository needs to be setup in a specific way.</p>
+<p>Click on settings in the far upper right corner:</p>
+<p><img src="resources/images/settings.png" title="Clicking on settings" alt="Clicking on settings" style="display: block; margin: auto;" /></p>
+<p>Click on branches:</p>
+<p><img src="resources/images/branches.png" title="Clicking on settings" alt="Clicking on settings" style="display: block; margin: auto;" /> Click the add rule button.</p>
+<p><img src="resources/images/add_rule.png" title="Adding rule" alt="Adding rule" style="display: block; margin: auto;" /> Type “main” as the branch name pattern:</p>
+<p><img src="resources/images/main_branch.png" title="adding main branch rule" alt="adding main branch rule" style="display: block; margin: auto;" /> Click on the following boxes to require pull requests before merging:</p>
+<p><img src="resources/images/branch_rule.png" title="modify branch rules" alt="modify branch rules" style="display: block; margin: auto;" /></p>
 
 
 

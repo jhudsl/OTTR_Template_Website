@@ -11,7 +11,7 @@
 
 
 
-<title>Website Name</title>
+<title>Git Actions</title>
 
 <script src="site_libs/header-attrs-2.10/header-attrs.js"></script>
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
@@ -283,28 +283,19 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore"><strong>Website Name</strong></h1>
+<h1 class="title toc-ignore">Git Actions</h1>
 
 </div>
 
 
-<div class="banner">
-<p>Banner text!</p>
-</div>
-<div id="about" class="section level3">
-<h3><strong>About</strong></h3>
-<p>This website was created with the OTTR_Template_Website template. This enables simpler creation of websites that have automated checks for broken URLs and spelling errors, as well as automated rendering of all html files. No need to worry about git conflicts for html files!</p>
-<p>Here is how you can include images in your website pages (this one is saved in <code>resources/images</code> to keep things tidy:</p>
-<p><img src="resources/images/example_image.png" title="Example image" alt="Example image" style="display: block; margin: auto;" /></p>
-<p>We will go through the following:</p>
-<ol style="list-style-type: decimal">
-<li>How to set up your repository to enable the GitHub actions of the template. (Setup tab)</li>
-<li>How to host your website using GitHub (Hosting tab)</li>
-<li>How to modify your website structure (Structure tab)</li>
-<li>How to change your website style (Style tab)</li>
-<li>More information about GitHub Actions (Git Actions tab)</li>
-</ol>
-<p>Click on each tab to learn more.</p>
+<div id="spelling-and-style-action" class="section level2">
+<h2>Spelling and Style Action</h2>
+<p>You may find that you have spelling errors if you get the following message from your pull request (PR):</p>
+<p><img src="resources/images/spelling.png" title="spelling issue PR image" alt="spelling issue PR image" style="display: block; margin: auto;" /></p>
+<p>If this happens, click the “Download the errors here.” link. This will take you to a table with words that the check thought were misspelled, as well as what file they occurred in and the lines in that file.</p>
+<p>Add words that are not actually misspelled to the <code>dictionary.txt</code> file located in the <code>resources</code> directory. It’s a good idea to try to keep this in alphabetical order.</p>
+<p>For words that are indeed misspelled, fix the errors and push your changes to your PR.</p>
+<p>You should then see that your PR has a different message that tells you that you have no spelling errors.</p>
 </div>
 
 

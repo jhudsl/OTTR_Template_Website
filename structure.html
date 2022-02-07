@@ -11,7 +11,7 @@
 
 
 
-<title>Website Name</title>
+<title>Structure</title>
 
 <script src="site_libs/header-attrs-2.10/header-attrs.js"></script>
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
@@ -283,28 +283,21 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore"><strong>Website Name</strong></h1>
+<h1 class="title toc-ignore">Structure</h1>
 
 </div>
 
 
-<div class="banner">
-<p>Banner text!</p>
-</div>
-<div id="about" class="section level3">
-<h3><strong>About</strong></h3>
-<p>This website was created with the OTTR_Template_Website template. This enables simpler creation of websites that have automated checks for broken URLs and spelling errors, as well as automated rendering of all html files. No need to worry about git conflicts for html files!</p>
-<p>Here is how you can include images in your website pages (this one is saved in <code>resources/images</code> to keep things tidy:</p>
-<p><img src="resources/images/example_image.png" title="Example image" alt="Example image" style="display: block; margin: auto;" /></p>
-<p>We will go through the following:</p>
-<ol style="list-style-type: decimal">
-<li>How to set up your repository to enable the GitHub actions of the template. (Setup tab)</li>
-<li>How to host your website using GitHub (Hosting tab)</li>
-<li>How to modify your website structure (Structure tab)</li>
-<li>How to change your website style (Style tab)</li>
-<li>More information about GitHub Actions (Git Actions tab)</li>
-</ol>
-<p>Click on each tab to learn more.</p>
+<div id="title" class="section level2">
+<h2>Title</h2>
+<p>To change the title of the website, modify the <code>name</code> line of the <code>_site.yml</code> file.</p>
+<p><img src="resources/images/title.png" title="Change title" alt="Change title" style="display: block; margin: auto;" /> ## Modifying pages</p>
+<p>Pages are specified in the navigation bar by the lines that say <code>-text:</code> and <code>href:</code>.</p>
+<p>The <code>-text</code> specifies what the navigation bar will say for that tab.</p>
+<p>The <code>href</code> specifies which rendered Rmd file to use for that tab, it needs to be the html version of this file.</p>
+<p>The tabs are aligned to the left in the order listed.</p>
+<p>You can also add icons to these tabs using <a href="https://fontawesome.com/">font awesome</a> as is shown for the contact page.</p>
+<p><img src="resources/images/page_modification.png" title="Page modification" alt="Page modification" style="display: block; margin: auto;" /></p>
 </div>
 
 
