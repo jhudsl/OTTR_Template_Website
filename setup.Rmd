@@ -1,0 +1,35 @@
+---
+title: "Setup"
+output: html_document
+---
+
+
+
+To enable the GitHub actions, your repository needs to be setup in a specific way.
+
+Click on settings in the far upper right corner:
+
+```{r, fig.align='center', fig.alt= "Clicking on settings", echo = FALSE}
+knitr::include_graphics("resources/images/settings.png")
+```
+
+Click on branches:
+
+```{r, fig.align='center', fig.alt= "Clicking on settings", echo = FALSE}
+knitr::include_graphics("resources/images/branches.png")
+```
+Click the add rule button.
+
+```{r, fig.align='center', fig.alt= "Adding rule", echo = FALSE}
+knitr::include_graphics("resources/images/add_rule.png")
+```
+Type "main" as the branch name pattern:
+
+```{r, fig.align='center', fig.alt= "adding main branch rule", echo = FALSE}
+knitr::include_graphics("resources/images/main_branch.png")
+```
+Click on the following boxes to require pull requests before merging:
+
+```{r, fig.align='center', fig.alt= "modify branch rules", echo = FALSE}
+knitr::include_graphics("resources/images/branch_rule.png")
+```
