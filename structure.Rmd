@@ -17,7 +17,7 @@ Pages are specified in the navigation bar by the  lines that say `-text:` and `h
 
 The `-text` specifies what the navigation bar will say for that tab.
 
-The `href` specifies which rendered rmd file to use for that tab, it needs to be the html version of this file.
+The `href` specifies which rendered Rmd file to use for that tab, it needs to be the html version of this file.
 
 The tabs are aligned to the left in the order listed.
 
