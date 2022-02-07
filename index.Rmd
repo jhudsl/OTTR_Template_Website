@@ -19,9 +19,15 @@ knitr::include_graphics("resources/images/example_image.png")
 ```
 
  
-To change the part of the navigation bar that says OTTR Web, modify the _site.yml file. This is also where you can add additional pages and change the names of those pages on the navigation bar.
+ 
+We will go through the following:
 
+1. How to set up your repository to enable the GitHub actions of the template. (Setup tab)
+2. How to host your website using GitHub (Hosting tab)
+3. How to modify your website structure (Structure tab)
+4. How to change your website style (Style tab)
 
+Click on each tab to learn more.
 
 
 

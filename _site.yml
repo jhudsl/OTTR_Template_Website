@@ -1,12 +1,18 @@
-name: Baltimore_Comunity_Data_Science_Course
+name: OTTR Template Website
 output_dir: '.'
 navbar:
   title: OTTR Web
   left:
   - text: Home
     href: index.html
-  - text: tabpage
-    href: tabpage.html   
+  - text: Setup
+    href: setup.html   
+  - text: Hosting
+    href: hosting.html   
+  - text: Structure
+    href: structure.html  
+  - text: Style
+    href: style.html  
   - text: Contact
     href: contact.html
     icon: fa-envelope

@@ -1,0 +1,45 @@
+---
+title: "Style"
+output: html_document
+---
+
+## Navigation bar
+
+To change the part of the navigation bar that says "OTTR Web", modify the title within the `_site.yml` file.
+
+
+```{r, fig.align='center', fig.alt= "Change nav bar", echo = FALSE}
+knitr::include_graphics("resources/images/navbar.png")
+```
+
+
+## Overall theme
+
+To change the color scheme/fonts of the website modify the `theme` in the `_site.yml` file (see [here](https://www.datadreaming.org/post/r-markdown-theme-gallery/) for options:
+
+```{r, fig.align='center', fig.alt= "Change theme", echo = FALSE}
+knitr::include_graphics("resources/images/theme.png")
+```
+
+
+## Additional changes
+
+To make additional changes to the style, you can modify the `styles.css` file with css code. This [website](https://www.w3schools.com/css/) has great information about css code.
+
+As an example if you wanted to change the color of the blue line to green you could change where it says lightblue to lightgreen in the `styles.css` file.
+
+
+```{r, fig.align='center', fig.alt= "Change color of line", echo = FALSE}
+knitr::include_graphics("resources/images/blue.png")
+```
+
+Note that if you change the css file with a new element that is not already defined like `body` then you would need to do it as done with the `banner` element. This was then added to the index.Rmd file by using:
+
+```
+<div class = "banner">
+Banner text!  
+</div>
+```
+
+Also checkout the [R Markdown cheatsheet]( https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf) for more custimatization of the pages.
+

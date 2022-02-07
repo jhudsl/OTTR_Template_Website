@@ -1,0 +1,30 @@
+---
+title: "Structure"
+output: html_notebook
+---
+
+
+
+## Title
+To change the title of the website, modify the `name` line of the `_site.yml` file.
+
+```{r, fig.align='center', fig.alt= "Change title", echo = FALSE}
+knitr::include_graphics("resources/images/title.png")
+```
+## Modifying pages
+
+Pages are specified in the navigation bar by the  lines that say `-text:` and `href:`.
+
+The `-text` specifies what the navigation bar will say for that tab.
+
+The `href` specifies which rendered rmd file to use for that tab, it needs to be the html version of this file.
+
+The tabs are aligned to the left in the order listed.
+
+You can also add icons to these tabs using [font awesome](https://fontawesome.com/) as is shown for the contact page.
+
+```{r, fig.align='center', fig.alt= "Page modification", echo = FALSE}
+knitr::include_graphics("resources/images/page_modification.png")
+```
+
+
