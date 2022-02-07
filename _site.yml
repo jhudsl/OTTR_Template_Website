@@ -12,7 +12,9 @@ navbar:
   - text: Structure
     href: structure.html  
   - text: Style
-    href: style.html  
+    href: style.html
+  - text: Git Actions
+    href: git_actions.html
   - text: Contact
     href: contact.html
     icon: fa-envelope
