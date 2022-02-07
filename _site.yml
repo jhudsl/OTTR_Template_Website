@@ -1,0 +1,23 @@
+name: Baltimore_Comunity_Data_Science_Course
+output_dir: '.'
+navbar:
+  title: OTTR Web
+  left:
+  - text: Home
+    href: index.html
+  - text: tabpage
+    href: tabpage.html   
+  - text: Contact
+    href: contact.html
+    icon: fa-envelope
+
+
+output:
+  html_document:
+    theme: cosmo
+    lib_dir: site_libs
+    self_contained: no
+    highlight: textmate
+    css: styles.css
+    includes:
+      in_header: resources/header.html

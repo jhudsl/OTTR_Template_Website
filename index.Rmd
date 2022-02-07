@@ -1,0 +1,27 @@
+---
+title: "**Website Name**"
+output:
+  html_document
+---
+
+<div class = "banner">
+Banner text!  
+</div>
+
+### **About**
+
+This website was created with the OTTR_Template_Website template. This enables simpler creation of websites that have automated checks for broken URLs and spelling errors, as well as automated rendering of all html files. No need to worry about git conflicts for html files!
+
+Here is how you can include images in your website pages (this one is saved in `resources/images` to keep things tidy:
+
+```{r, fig.align='center', fig.alt= "Example image", echo = FALSE}
+knitr::include_graphics("resources/images/example_image.png")
+```
+
+ 
+To change the part of the navigation bar that says OTTR Web, modify the _site.yml file. This is also where you can add additional pages and change the names of those pages on the navigation bar.
+
+
+
+
+
