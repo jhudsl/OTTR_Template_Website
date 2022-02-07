@@ -1,0 +1,22 @@
+---
+title: "Git Actions"
+output: html_document
+---
+
+## Spelling and Style Action
+
+You may find that you have spelling errors if you get the following message from your pull request (PR):
+
+```{r, fig.align='center', fig.alt= "spelling issue PR image", echo = FALSE}
+knitr::include_graphics("resources/images/spelling.png")
+```
+
+If this happens, click the "Download the errors here." link. 
+
+Then add words that are not actually misspelled but that the workflow recognizes as misspelled to the `dictionary.txt` file located in the `resources` directory.
+
+For words that are indeed misspelled, fix the errors and push your changes to your PR. 
+
+You should then see that your PR has a different message that tells you that you have no spelling errors.
+
+
