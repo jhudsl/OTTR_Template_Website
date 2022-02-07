@@ -7,5 +7,6 @@ lightblue
 lightgreen
 OTTR
 Rmd
+subdir
 th
 www
