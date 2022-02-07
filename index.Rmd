@@ -26,7 +26,7 @@ We will go through the following:
 2. How to host your website using GitHub (Hosting tab)
 3. How to modify your website structure (Structure tab)
 4. How to change your website style (Style tab)
-5. How to deal with Git action errors (Git Actions tab)
+5. More information about GitHub Actions (Git Actions tab)
 
 Click on each tab to learn more.
 

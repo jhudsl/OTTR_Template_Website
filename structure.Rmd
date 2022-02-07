@@ -1,6 +1,6 @@
 ---
 title: "Structure"
-output: html_notebook
+output: html_document
 ---
 
 
