@@ -1,11 +1,7 @@
 
-# This code was originally written by Josh Shapiro and Candace Savonen
-# for the Childhood Cancer Data Lab, an initiative of Alexs Lemonade Stand Foundation.
-# https://github.com/AlexsLemonade/refinebio-examples/blob/33cdeff66d57f9fe8ee4fcb5156aea4ac2dce07f/.github/workflows/style-and-sp-check.yml#L1
 # It was adapted by Candace Savonen for the OTTR_template https://github.com/jhudsl/OTTR_Template.
 
-# This code was adapted by Carrie Wright to enable autmated rendering of the site associated with this repository
-
+# This code was adapted by Carrie Wright to enable automated rendering of the site associated with this repository
 
 name: Render html
 
@@ -21,7 +17,7 @@ on:
       - _site.yml
       - subdir_html/*.Rmd
       - resources/images/*.png
-       - resources/images/favicon.ico
+      - resources/images/favicon.ico
 
 jobs:
   # This workflow contains a single job called "build-all"
@@ -46,17 +42,17 @@ jobs:
       # We want a fresh run of the renders each time - so first delete old html files
       - name: Delete old *.html
         run: Rscript -e "rmarkdown::clean_site(preview = FALSE)"
-        
+
        # Now we want to render all the html files from the Rmd files
       - name: Run render html
         id: site
         run: Rscript -e "rmarkdown::render_site()"
-        
+
       # We may have html files that we want to render to add as links on the pages -these will be stored in a dir called subdir_html
       - name: Render subdir_html
         id: subdir_html
         run: Rscript -e "for (i in list.files(path = './subdir_html', pattern = 'Rmd$', recursive = TRUE, full.names = TRUE)){rmarkdown::render(i)}"
-    
+
       # This checks on the steps before it and makes sure that they completed.
       # If the renders didn't complete we don't want to commit the file changes
       - name: Check on render steps
