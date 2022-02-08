@@ -80,7 +80,7 @@ jobs:
               git add . --force
               git commit -m 'Render website preview'
               git pull --set-upstream origin $branch_name --allow-unrelated-histories
-              git push
+              git push >/dev/null
             fi
           fi
         shell: bash
