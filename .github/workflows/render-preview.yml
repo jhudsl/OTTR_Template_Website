@@ -110,8 +110,7 @@ jobs:
           comment-id: ${{ steps.fc.outputs.comment-id }}
           issue-number: ${{ github.event.pull_request.number }}
           body: |
-            Re-rendered previews from the latest commit:
-            - See [preview of website here](${{ steps.build-components.outputs.website_link }})
+            Re-rendered previews from the latest commit: See [preview of website here](${{ steps.build-components.outputs.website_link }})
 
             _Updated at ${{ steps.build-components.outputs.time }} with changes from ${{ steps.build-components.outputs.commit_id }}_
           edit-mode: replace
