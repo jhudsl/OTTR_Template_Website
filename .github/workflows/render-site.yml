@@ -18,6 +18,7 @@ on:
       - subdir_html/*.Rmd
       - resources/images/*.png
       - resources/images/favicon.ico
+      - site_libs/*
 
 jobs:
   # This workflow contains a single job called "build-all"
