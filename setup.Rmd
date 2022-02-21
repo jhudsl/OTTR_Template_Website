@@ -9,13 +9,13 @@ To enable the GitHub actions, your repository needs to be setup in a specific wa
 
 Click on settings in the far upper right corner:
 
-```{r, fig.align='center', fig.alt= "Clicking on settings", echo = FALSE}
+```{r, fig.align='center', fig.alt= "Clicking on settings", echo = FALSE, out.width="80%"}
 knitr::include_graphics("resources/images/settings.png")
 ```
 
 Click on branches:
 
-```{r, fig.align='center', fig.alt= "Clicking on settings", echo = FALSE}
+```{r, fig.align='center', fig.alt= "Clicking on settings", echo = FALSE, out.width="80%"}
 knitr::include_graphics("resources/images/branches.png")
 ```
 Click the add rule button.
@@ -25,11 +25,11 @@ knitr::include_graphics("resources/images/add_rule.png")
 ```
 Type "main" as the branch name pattern:
 
-```{r, fig.align='center', fig.alt= "adding main branch rule", echo = FALSE}
+```{r, fig.align='center', fig.alt= "adding main branch rule", echo = FALSE, out.width="80%"}
 knitr::include_graphics("resources/images/main_branch.png")
 ```
 Click on the following boxes to require pull requests before merging:
 
-```{r, fig.align='center', fig.alt= "modify branch rules", echo = FALSE}
+```{r, fig.align='center', fig.alt= "modify branch rules", echo = FALSE, out.width="80%"}
 knitr::include_graphics("resources/images/branch_rule.png")
 ```
