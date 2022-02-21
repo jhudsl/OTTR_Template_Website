@@ -62,12 +62,13 @@ jobs:
           echo site status ${{steps.site.outcome}}
           exit 1
 
-      # Commit the rendered site files
+# Commit the rendered site files - html files and site_libs files
       - name: Commit rendered site files
         run: |
           git config --local user.email "actions@github.com"
           git config --local user.name "GitHub Actions"
           git add --force *.html
           git add --force subdir_html/*.html
+          git add --force site_libs/*
           git commit -m 'Render site' || echo "No changes to commit"
           git push origin main || echo "No changes to push"
