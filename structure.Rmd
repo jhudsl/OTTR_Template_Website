@@ -8,9 +8,10 @@ output: html_document
 ## Title
 To change the title of the website, modify the `name` line of the `_site.yml` file.
 
-```{r, fig.align='center', fig.alt= "Change title", echo = FALSE}
+```{r, fig.align='center', fig.alt= "Change title", echo = FALSE, out.width="40%"}
 knitr::include_graphics("resources/images/title.png")
 ```
+
 ## Modifying pages
 
 Pages are specified in the navigation bar by the  lines that say `-text:` and `href:`.
@@ -23,7 +24,7 @@ The tabs are aligned to the left in the order listed.
 
 You can also add icons to these tabs using [font awesome](https://fontawesome.com/) as is shown for the contact page.
 
-```{r, fig.align='center', fig.alt= "Page modification", echo = FALSE}
+```{r, fig.align='center', fig.alt= "Page modification", echo = FALSE, out.width="40%"}
 knitr::include_graphics("resources/images/page_modification.png")
 ```
 

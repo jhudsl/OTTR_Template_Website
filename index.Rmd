@@ -14,7 +14,7 @@ This website was created with the OTTR_Template_Website template. This enables s
 
 Here is how you can include images in your website pages (this one is saved in `resources/images` to keep things tidy:
 
-```{r, fig.align='center', fig.alt= "Example image", echo = FALSE}
+```{r, fig.align='center', fig.alt= "Example image", echo = FALSE, out.width="30%"}
 knitr::include_graphics("resources/images/example_image.png")
 ```
 

@@ -8,16 +8,16 @@ output: html_document
 To change the part of the navigation bar that says "OTTR Web", modify the title within the `_site.yml` file.
 
 
-```{r, fig.align='center', fig.alt= "Change nav bar", echo = FALSE}
+```{r, fig.align='center', fig.alt= "Change nav bar", echo = FALSE, out.width="40%"}
 knitr::include_graphics("resources/images/navbar.png")
 ```
 
 
 ## Overall theme
 
-To change the color scheme/fonts of the website modify the `theme` in the `_site.yml` file (see [here](https://www.datadreaming.org/post/r-markdown-theme-gallery/) for options:
+To change the color scheme/fonts of the website modify the `theme` in the `_site.yml` file (see [here](https://www.datadreaming.org/post/r-markdown-theme-gallery/) for options):
 
-```{r, fig.align='center', fig.alt= "Change theme", echo = FALSE}
+```{r, fig.align='center', fig.alt= "Change theme", echo = FALSE, out.width="40%"}
 knitr::include_graphics("resources/images/theme.png")
 ```
 
@@ -29,7 +29,7 @@ To make additional changes to the style, you can modify the `styles.css` file wi
 As an example if you wanted to change the color of the blue line to green you could change where it says lightblue to lightgreen in the `styles.css` file.
 
 
-```{r, fig.align='center', fig.alt= "Change color of line", echo = FALSE}
+```{r, fig.align='center', fig.alt= "Change color of line", echo = FALSE, out.width="80%"}
 knitr::include_graphics("resources/images/blue.png")
 ```
 

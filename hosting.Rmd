@@ -9,18 +9,18 @@ To host your website on GitHub, you will need to go to settings and click on the
 
 Again to go to settings click on the far upper right corner:
 
-```{r, fig.align='center', fig.alt= "Clicking on settings", echo = FALSE}
+```{r, fig.align='center', fig.alt= "Clicking on settings", echo = FALSE, out.width="80%"}
 knitr::include_graphics("resources/images/settings.png")
 ```
 
 Click on Pages:
 
-```{r, fig.align='center', fig.alt= "Clicking on pages", echo = FALSE}
+```{r, fig.align='center', fig.alt= "Clicking on pages", echo = FALSE, out.width="80%"}
 knitr::include_graphics("resources/images/pages.png")
 ```
 
 Select the main branch and the root directory and press save. Be sure to also check the "Enforce HTTPS" box. Afterwards your repository should look like this:
 
-```{r, fig.align='center', fig.alt= "setup website hosting", echo = FALSE}
+```{r, fig.align='center', fig.alt= "setup website hosting", echo = FALSE, out.width="80%"}
 knitr::include_graphics("resources/images/website_setup.png")
 ```
