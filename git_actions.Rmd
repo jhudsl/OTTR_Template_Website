@@ -7,7 +7,7 @@ output: html_document
 
 You may find that you have spelling errors if you get the following message from your pull request (PR):
 
-```{r, fig.align='center', fig.alt= "spelling issue PR image", echo = FALSE}
+```{r, fig.align='center', fig.alt= "spelling issue PR image", echo = FALSE, out.width="80%"}
 knitr::include_graphics("resources/images/spelling.png")
 ```
 
