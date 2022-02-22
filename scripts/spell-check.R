@@ -20,11 +20,15 @@ root_dir <- rprojroot::find_root(rprojroot::has_dir(".git"))
 # Read in dictionary
 dictionary <- readLines(file.path(root_dir, 'resources', 'dictionary.txt'))
 
-# Add mysterious emoji joining character
-dictionary <- c(dictionary, spelling::spell_check_text("⬇️")$word)
-
 # Only declare `.Rmd` files but not the ones in the style-sets directory
 files <- list.files(pattern = 'Rmd$', recursive = TRUE, full.names = TRUE)
+
+# Get quiz file names
+quiz_files <- list.files(file.path(root_dir, "quizzes"), pattern = '\\.md$', full.names = TRUE)
+
+# Put into one list
+files <- c(files, quiz_files)
+
 files <- grep("About.Rmd", files, ignore.case = TRUE, invert = TRUE, value = TRUE)
 files <- grep("style-sets", files, ignore.case = TRUE, invert = TRUE, value = TRUE)
 
