@@ -39,7 +39,22 @@ jobs:
           fi
         shell: bash
 
+      - name: Check if this is a private repository
+        id: public_repository
+        run: |
+          public=$(curl -Is https://github.com/${GITHUB_REPOSITORY} | head -1 | tr -dc '0-9')
+          if [ $public -eq 2200 ];then
+            public='true'
+            echo 'public repository'
+          else
+            public='false'
+            echo 'private repository'
+          fi
+          echo ::set-output name=public::$public
+        shell: bash
+
     outputs:
+      public_repository: "${{ steps.public_repository.outputs.public }}"
       toggle_spell_check: "${{ env.SPELL_CHECK }}"
       toggle_url_check: "${{ env.URL_CHECKER }}"
       toggle_render_preview: "${{ env.RENDER_PREVIEW }}"
@@ -66,7 +81,7 @@ jobs:
           branch_name='preview-${{ github.event.pull_request.number }}'
           git fetch --all
           git checkout $branch_name
-          git merge -s recursive --strategy-option=ours origin/${{ github.head_ref }} --allow-unrelated-histories
+          git merge -s recursive --strategy-option=theirs origin/${{ github.head_ref }} --allow-unrelated-histories
         shell: bash
 
       - name: Run spell check
@@ -96,7 +111,12 @@ jobs:
           GH_PAT: ${{ secrets.GH_PAT }}
         run: |
           branch_name='preview-${{ github.event.pull_request.number }}'
-          sp_error_url=https://raw.githubusercontent.com/${GITHUB_REPOSITORY}/$branch_name/resources/spell_check_results.tsv
+          if ${{ needs.yaml-check.outputs.public_repository }} == 'true'
+          then
+            sp_error_url=https://raw.githubusercontent.com/${GITHUB_REPOSITORY}/$branch_name/resources/spell_check_results.tsv
+          else
+            sp_error_url=https://github.com/${GITHUB_REPOSITORY}/blob/$branch_name/resources/spell_check_results.tsv
+          fi
           echo ::set-output name=time::$(date +'%Y-%m-%d')
           echo ::set-output name=commit_id::$GITHUB_SHA
           echo ::set-output name=sp_error_url::$sp_error_url
@@ -157,7 +177,7 @@ jobs:
         branch_name='preview-${{ github.event.pull_request.number }}'
         git fetch --all
         git checkout $branch_name
-        git merge -s recursive --strategy-option=ours origin/${{ github.head_ref }} --allow-unrelated-histories
+        git merge -s recursive --strategy-option=theirs origin/${{ github.head_ref }} --allow-unrelated-histories
       shell: bash
 
     - name: URLs checker
@@ -206,7 +226,12 @@ jobs:
         GH_PAT: ${{ secrets.GH_PAT }}
       run: |
         branch_name='preview-${{ github.event.pull_request.number }}'
-        url_errors=https://raw.githubusercontent.com/${GITHUB_REPOSITORY}/$branch_name/resources/url_checks.csv
+        if ${{ needs.yaml-check.outputs.public_repository }} == 'true'
+        then
+          url_errors=https://raw.githubusercontent.com/${GITHUB_REPOSITORY}/$branch_name/resources/url_checks.csv
+        else
+          url_errors=https://github.com/${GITHUB_REPOSITORY}/blob/$branch_name/resources/url_checks.csv
+        fi
         echo ::set-output name=time::$(date +'%Y-%m-%d')
         echo ::set-output name=commit_id::$GITHUB_SHA
         echo ::set-output name=url_errors::$url_errors
@@ -270,7 +295,7 @@ jobs:
           branch_name='preview-${{ github.event.pull_request.number }}'
           git fetch --all
           git checkout $branch_name
-          git merge -s recursive --strategy-option=ours origin/${{ github.head_ref }} --allow-unrelated-histories
+          git merge -s recursive --strategy-option=theirs origin/${{ github.head_ref }} --allow-unrelated-histories
         shell: bash
 
       # We want a fresh run of the renders each time - so first delete old html files
