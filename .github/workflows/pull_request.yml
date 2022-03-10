@@ -81,7 +81,6 @@ jobs:
           branch_name='preview-${{ github.event.pull_request.number }}'
           git fetch --all
           git checkout $branch_name
-          git diff origin/${{ github.head_ref }} --name-only --diff-filter=D | xargs git rm
           git merge -s recursive --strategy-option=theirs origin/${{ github.head_ref }} --allow-unrelated-histories
         shell: bash
 
@@ -178,7 +177,6 @@ jobs:
         branch_name='preview-${{ github.event.pull_request.number }}'
         git fetch --all
         git checkout $branch_name
-        git diff origin/${{ github.head_ref }} --name-only --diff-filter=D | xargs git rm
         git merge -s recursive --strategy-option=theirs origin/${{ github.head_ref }} --allow-unrelated-histories
       shell: bash
 
@@ -219,7 +217,6 @@ jobs:
         git add --force resources/url_checks.csv || echo "No changes to commit"
         git commit -m 'Add URL check file' || echo "No changes to commit"
         git fetch
-        git diff origin/${{ github.head_ref }} --name-only --diff-filter=D | xargs git rm
         git merge -s recursive --strategy-option=ours origin/${{ github.head_ref }} --allow-unrelated-histories
         git push --force origin $branch_name || echo "No changes to commit"
 
@@ -298,7 +295,6 @@ jobs:
           branch_name='preview-${{ github.event.pull_request.number }}'
           git fetch --all
           git checkout $branch_name
-          git diff origin/${{ github.head_ref }} --name-only --diff-filter=D | xargs git rm
           git merge -s recursive --strategy-option=theirs origin/${{ github.head_ref }} --allow-unrelated-histories
         shell: bash
 
