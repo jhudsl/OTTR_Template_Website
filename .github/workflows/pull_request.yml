@@ -325,7 +325,7 @@ jobs:
         id: commit
         run: |
           branch_name='preview-${{ github.event.pull_request.number }}'
-          git diff origin/main -- docs >/dev/null && changes=true || changes=false
+          git diff origin/main -- '*.html' >/dev/null && changes=true || changes=false
           echo ::set-output name=changes::$changes
           git add . --force
           git commit -m 'Render preview' || echo "No changes to commit"
@@ -352,7 +352,7 @@ jobs:
           echo ${{steps.commit.outputs.changes}}
 
       - name: Create or update comment
-        if: steps.commit.outputs.changes == 'changes'
+        if: steps.commit.outputs.changes == 'true'
         uses: peter-evans/create-or-update-comment@v1
         with:
           comment-id: ${{ steps.fc.outputs.comment-id }}
@@ -364,7 +364,7 @@ jobs:
           edit-mode: replace
 
       - name: No comment if no changes
-        if: steps.commit.outputs.changes == 'no_changes'
+        if: steps.commit.outputs.changes == 'false'
         uses: peter-evans/create-or-update-comment@v1
         with:
           comment-id: ${{ steps.fc.outputs.comment-id }}
