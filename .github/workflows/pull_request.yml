@@ -95,12 +95,12 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: spell-check-results
-          path: resources/spell_check_results.tsv
+          path: check_reports/spell_check_results.tsv
 
       - name: Commit spell check errors
         run: |
           branch_name='preview-${{ github.event.pull_request.number }}'
-          git add --force resources/spell_check_results.tsv || echo "No changes to commit"
+          git add --force check_reports/spell_check_results.tsv || echo "No changes to commit"
           git commit -m 'Add spell check file' || echo "No changes to commit"
           git pull --set-upstream origin $branch_name --allow-unrelated-histories --strategy-option=ours
           git push --force origin $branch_name || echo "No changes to commit"
@@ -113,9 +113,9 @@ jobs:
           branch_name='preview-${{ github.event.pull_request.number }}'
           if ${{ needs.yaml-check.outputs.public_repository }} == 'true'
           then
-            sp_error_url=https://raw.githubusercontent.com/${GITHUB_REPOSITORY}/$branch_name/resources/spell_check_results.tsv
+            sp_error_url=https://raw.githubusercontent.com/${GITHUB_REPOSITORY}/$branch_name/check_reports/spell_check_results.tsv
           else
-            sp_error_url=https://github.com/${GITHUB_REPOSITORY}/blob/$branch_name/resources/spell_check_results.tsv
+            sp_error_url=https://github.com/${GITHUB_REPOSITORY}/blob/$branch_name/check_reports/spell_check_results.tsv
           fi
           echo ::set-output name=time::$(date +'%Y-%m-%d')
           echo ::set-output name=commit_id::$GITHUB_SHA
@@ -203,7 +203,7 @@ jobs:
         force_pass: true
 
         # A path to a csv file to save results to
-        save: resources/url_checks.csv
+        save: check_reports/url_checks.csv
 
     - name: Count URL errors
       id: url_errors
@@ -214,7 +214,7 @@ jobs:
     - name: Commit URL check
       run: |
         branch_name='preview-${{ github.event.pull_request.number }}'
-        git add --force resources/url_checks.csv || echo "No changes to commit"
+        git add --force check_reports/url_checks.csv || echo "No changes to commit"
         git commit -m 'Add URL check file' || echo "No changes to commit"
         git fetch
         git merge -s recursive --strategy-option=ours origin/${{ github.head_ref }} --allow-unrelated-histories
@@ -228,9 +228,9 @@ jobs:
         branch_name='preview-${{ github.event.pull_request.number }}'
         if ${{ needs.yaml-check.outputs.public_repository }} == 'true'
         then
-          url_errors=https://raw.githubusercontent.com/${GITHUB_REPOSITORY}/$branch_name/resources/url_checks.csv
+          url_errors=https://raw.githubusercontent.com/${GITHUB_REPOSITORY}/$branch_name/check_reports/url_checks.csv
         else
-          url_errors=https://github.com/${GITHUB_REPOSITORY}/blob/$branch_name/resources/url_checks.csv
+          url_errors=https://github.com/${GITHUB_REPOSITORY}/blob/$branch_name/check_reports/url_checks.csv
         fi
         echo ::set-output name=time::$(date +'%Y-%m-%d')
         echo ::set-output name=commit_id::$GITHUB_SHA
@@ -325,7 +325,7 @@ jobs:
         id: commit
         run: |
           branch_name='preview-${{ github.event.pull_request.number }}'
-          git diff origin/main -- docs >/dev/null && changes=true || changes=false
+          git diff origin/main -- '*.html' >/dev/null && changes=true || changes=false
           echo ::set-output name=changes::$changes
           git add . --force
           git commit -m 'Render preview' || echo "No changes to commit"
@@ -352,7 +352,7 @@ jobs:
           echo ${{steps.commit.outputs.changes}}
 
       - name: Create or update comment
-        if: steps.commit.outputs.changes == 'changes'
+        if: steps.commit.outputs.changes == 'true'
         uses: peter-evans/create-or-update-comment@v1
         with:
           comment-id: ${{ steps.fc.outputs.comment-id }}
@@ -364,7 +364,7 @@ jobs:
           edit-mode: replace
 
       - name: No comment if no changes
-        if: steps.commit.outputs.changes == 'no_changes'
+        if: steps.commit.outputs.changes == 'false'
         uses: peter-evans/create-or-update-comment@v1
         with:
           comment-id: ${{ steps.fc.outputs.comment-id }}
