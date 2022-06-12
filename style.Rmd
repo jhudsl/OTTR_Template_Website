@@ -21,6 +21,13 @@ To change the color scheme/fonts of the website modify the `theme` in the `_site
 knitr::include_graphics("resources/images/theme.png")
 ```
 
+## Change the favicon
+
+The small image that shows up on the browser can also be changed.
+
+You can make a small image to replace the existing one by going to https://favicon.io/favicon-converter/ and uploading an image that you would like.
+
+Next, simply replace the image called `favicon.ico` in the `images` directory within the `resources` directory with the image you just created and downloaded from the favicon converter website.
 
 ## Additional changes
 
