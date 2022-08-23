@@ -2,6 +2,12 @@ cheatsheet
 css
 custimization
 cwrigh
+Dockerfile
+Dockerhub
+favicon
+GH
+Github
+GitHub
 HTTPS
 lightblue
 lightgreen
