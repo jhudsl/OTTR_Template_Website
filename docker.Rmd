@@ -1,0 +1,21 @@
+---
+title: "Docker"
+output: html_document
+---
+
+## Customizing Docker
+
+If you need to have the rendering of your website done by a customized docker image, you can [follow these instructions to start your own new docker image](https://www.ottrproject.org/customize-docker.html#Starting_a_new_Docker_image).
+
+In summary, you'll need to:
+
+1. Create a new Dockerfile that begins with:
+
+```
+FROM jhudsl/course_template:main
+```
+So that the OTTR required items are incorporated into your new Docker image.
+
+2. After you successfully build this new docker image, you need to push it to Dockerhub so it can be pulled by the OTTR Github actions.
+
+3. Then, in your `config_automation.yml` file, you need to change the `rendering-docker-image:`  spec to be the new docker image's name. 
