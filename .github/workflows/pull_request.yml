@@ -58,6 +58,7 @@ jobs:
       toggle_spell_check: "${{ env.SPELL_CHECK }}"
       toggle_url_check: "${{ env.URL_CHECKER }}"
       toggle_render_preview: "${{ env.RENDER_PREVIEW }}"
+      rendering_docker_image: "${{ env.RENDERING_DOCKER_IMAGE }}"
 
   spell-check:
     name: Check spelling
@@ -65,7 +66,7 @@ jobs:
     runs-on: ubuntu-latest
     if: ${{needs.yaml-check.outputs.toggle_spell_check == 'yes'}}
     container:
-      image: jhudsl/course_template:main
+      image: ${{needs.yaml-check.outputs.rendering_docker_image}}
 
     steps:
       - name: Checkout files
@@ -163,7 +164,7 @@ jobs:
     runs-on: ubuntu-latest
     if: ${{needs.yaml-check.outputs.toggle_url_check == 'yes'}}
     container:
-      image: jhudsl/course_template:main
+      image: ${{needs.yaml-check.outputs.rendering_docker_image}}
 
     steps:
     - name: checkout repo

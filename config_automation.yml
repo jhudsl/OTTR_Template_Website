@@ -6,3 +6,7 @@ url-checker: yes
 render-preview: yes
 # Spell check Rmds and quizzes
 spell-check: yes
+
+# What docker image should be used for rendering?
+# The default is jhudsl/course_template:main
+rendering-docker-image: 'jhudsl/course_template:main'

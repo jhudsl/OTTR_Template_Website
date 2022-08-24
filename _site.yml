@@ -6,15 +6,17 @@ navbar:
   - text: Home
     href: index.html
   - text: Setup
-    href: setup.html   
+    href: setup.html
   - text: Hosting
-    href: hosting.html   
+    href: hosting.html
   - text: Structure
-    href: structure.html  
+    href: structure.html
   - text: Style
     href: style.html
   - text: Git Actions
     href: git_actions.html
+  - text: Docker
+    href: docker.html
   - text: Contact
     href: contact.html
     icon: fa-envelope
