@@ -22,10 +22,14 @@ The `href` specifies which rendered Rmd file to use for that tab, it needs to be
 
 The tabs are aligned to the left in the order listed.
 
-You can also add icons to these tabs using [font awesome](https://fontawesome.com/) as is shown for the contact page.
+You can also add icons to these tabs using [font awesome](https://fontawesome.com/) as is shown for the contact page. 
 
 ```{r, fig.align='center', fig.alt= "Page modification", echo = FALSE, out.width="40%"}
 knitr::include_graphics("resources/images/page_modification.png")
 ```
 
+Other icon options include [Bootstap glyphicons](https://www.w3schools.com/bootstrap/bootstrap_ref_comp_glyphs.asp) or [ion icons](https://ionic.io/ionicons). Note that **not all icons will work** because they are not all set up with the packages that make rendering the website possible, so this may require some trial and error.  Here is an example of how you would use both of these options:
 
+```{r, fig.align='center', fig.alt= "more icon options", echo = FALSE, out.width="40%"}
+knitr::include_graphics("resources/images/more_icons.png")
+```
