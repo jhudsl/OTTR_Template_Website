@@ -11,7 +11,7 @@
 
 
 
-<title>Git Actions</title>
+<title>Docker</title>
 
 <script src="site_libs/header-attrs-2.10/header-attrs.js"></script>
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
@@ -286,19 +286,24 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">Git Actions</h1>
+<h1 class="title toc-ignore">Docker</h1>
 
 </div>
 
 
-<div id="spelling-and-style-action" class="section level2">
-<h2>Spelling and Style Action</h2>
-<p>You may find that you have spelling errors if you get the following message from your pull request (PR):</p>
-<p><img src="resources/images/spelling.png" title="spelling issue PR image" alt="spelling issue PR image" width="80%" style="display: block; margin: auto;" /></p>
-<p>If this happens, click the “Download the errors here.” link. This will take you to a table with words that the check thought were misspelled, as well as what file they occurred in and the lines in that file.</p>
-<p>Add words that are not actually misspelled to the <code>dictionary.txt</code> file located in the <code>resources</code> directory. It’s a good idea to try to keep this in alphabetical order.</p>
-<p>For words that are indeed misspelled, fix the errors and push your changes to your PR.</p>
-<p>You should then see that your PR has a different message that tells you that you have no spelling errors.</p>
+<div id="customizing-docker" class="section level2">
+<h2>Customizing Docker</h2>
+<p>If you need to have the rendering of your website done by a customized docker image, you can <a href="https://www.ottrproject.org/customize-docker.html#Starting_a_new_Docker_image">follow these instructions to start your own new docker image</a>.</p>
+<p>In summary, you’ll need to:</p>
+<ol style="list-style-type: decimal">
+<li>Create a new Dockerfile that begins with:</li>
+</ol>
+<pre><code>FROM jhudsl/course_template:main</code></pre>
+<p>So that the OTTR required items are incorporated into your new Docker image.</p>
+<ol start="2" style="list-style-type: decimal">
+<li><p>After you successfully build this new docker image, you need to push it to Dockerhub so it can be pulled by the OTTR Github actions.</p></li>
+<li><p>Then, in your <code>config_automation.yml</code> file, you need to change the <code>rendering-docker-image:</code> spec to be the new docker image’s name.</p></li>
+</ol>
 </div>
 
 
