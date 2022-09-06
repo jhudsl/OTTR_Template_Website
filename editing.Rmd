@@ -39,3 +39,10 @@ Other icon options include [Bootstap glyphicons](https://www.w3schools.com/boots
 ```{r, fig.align='center', fig.alt= "more icon options", echo = FALSE, out.width="40%"}
 knitr::include_graphics("resources/images/more_icons.png")
 ```
+
+
+This will result in a navigation bar with these icons:
+
+```{r, fig.align='center', fig.alt= "more icon options", echo = FALSE, out.width="70%"}
+knitr::include_graphics("resources/images/more_icons_result.png")
+```
