@@ -13,8 +13,8 @@
 
 <title>Setup</title>
 
-<script src="site_libs/header-attrs-2.14/header-attrs.js"></script>
-<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="site_libs/header-attrs-2.10/header-attrs.js"></script>
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
@@ -34,7 +34,6 @@
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
 <link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
 <link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
-<link href="site_libs/ionicons-2.0.1/css/ionicons.min.css" rel="stylesheet" />
 <link rel="shortcut icon" href="resources/images/favicon.ico" />
  <!--- go to https://favicon.io/favicon-converter/ to upload an image to make a new favicon.io. You will need to replace the current favicon.io image with the one in the downloaded directory from the website. The current image is in the resources/images/ directory --->
 
@@ -57,7 +56,6 @@ if (window.hljs) {
   }
 }
 </script>
-
 
 
 
@@ -87,9 +85,6 @@ button.code-folding-btn:focus {
 }
 summary {
   display: list-item;
-}
-details > summary > p:only-child {
-  display: inline;
 }
 pre code {
   padding: 0;
@@ -242,7 +237,7 @@ $(document).ready(function () {
 <div class="navbar navbar-default  navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -252,21 +247,13 @@ $(document).ready(function () {
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="index.html">
-    <span class="fa fa-home"></span>
-     
-    Home
-  </a>
+  <a href="index.html">Home</a>
 </li>
 <li>
   <a href="setup.html">Setup</a>
 </li>
 <li>
-  <a href="hosting.html">
-    <span class="glyphicon glyphicon-globe"></span>
-     
-    Hosting
-  </a>
+  <a href="hosting.html">Hosting</a>
 </li>
 <li>
   <a href="editing.html">Editing</a>
@@ -275,11 +262,7 @@ $(document).ready(function () {
   <a href="style.html">Style</a>
 </li>
 <li>
-  <a href="git_actions.html">
-    <span class="ion ion-logos-github"></span>
-     
-    Git Actions
-  </a>
+  <a href="git_actions.html">Git Actions</a>
 </li>
 <li>
   <a href="docker.html">Docker</a>
@@ -308,30 +291,27 @@ $(document).ready(function () {
 </div>
 
 
-<p>To enable the GitHub actions, your repository needs to be setup in a
-specific way.</p>
+<div id="getting-started" class="section level3">
+<h3>Getting started</h3>
+<p>Create your repository by clicking on the <code>Use this Template</code> button at <a href="https://github.com/jhudsl/OTTR_Template_Website">OTTR_Template_Website repository</a></p>
+<p><img src="resources/images/create-repo.png" /></p>
+<p>You’ll need to make your repository <code>public</code>.</p>
+</div>
 <div id="set-your-gh_pat" class="section level3">
 <h3>Set your GH_PAT</h3>
-<p>For OTTR GitHub actions to run, they need to have credentials through
-a personal access token.</p>
+<p>To enable the GitHub actions, your repository needs to be setup in a specific way.</p>
+<p>For OTTR GitHub actions to run, they need to have credentials through a personal access token.</p>
 <ol style="list-style-type: decimal">
-<li><p>Set up your own personal access token <a
-href="https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token">following
-these instructions</a>. Keep this personal access token handy for the
-next step.</p></li>
-<li><p>In your new OTTR_Template_Website derived repository, go to
-Settings &gt; Secrets &gt; Actions. Click
-<code>New Repository Secret</code>. In the window opened, name this new
-secret <code>GH_PAT</code> and paste the personal access token in the
-box below.</p></li>
+<li><p>Set up your own personal access token <a href="https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token">following these instructions</a>. Keep this personal access token handy for the next step.</p></li>
+<li><p>In your new OTTR_Template_Website derived repository, go to Settings &gt; Secrets &gt; Actions. Click <code>New Repository Secret</code>. In the window opened, name this new secret <code>GH_PAT</code> and paste the personal access token in the box below.</p></li>
 </ol>
 <p><img src="resources/images/setting_gh_pat.png" title="Clicking on settings" alt="Clicking on settings" width="80%" style="display: block; margin: auto;" /></p>
 </div>
 <div id="protect-branches" class="section level3">
 <h3>Protect branches</h3>
+<p>Although this isn’t entirely required, its strongly recommended that you use these settings to protect your <code>main</code> branches.</p>
 <p>Click on settings in the far upper right corner:</p>
-<p><img src="resources/images/settings.png" title="Clicking on settings" alt="Clicking on settings" width="80%" style="display: block; margin: auto;" /></p>
-<p>Click on branches:</p>
+<p><img src="resources/images/settings.png" title="Clicking on settings" alt="Clicking on settings" width="80%" style="display: block; margin: auto;" /> Click on branches:</p>
 <p><img src="resources/images/branches.png" title="Clicking on settings" alt="Clicking on settings" width="80%" style="display: block; margin: auto;" /> Click the add rule button.</p>
 <p><img src="resources/images/add_rule.png" title="Adding rule" alt="Adding rule" width="608" style="display: block; margin: auto;" /> Type “main” as the branch name pattern:</p>
 <p><img src="resources/images/main_branch.png" title="adding main branch rule" alt="adding main branch rule" width="80%" style="display: block; margin: auto;" /> Click on the following boxes to require pull requests before merging:</p>
