@@ -1,11 +1,17 @@
 ---
-title: "Structure"
+title: "Editing"
 output: html_document
 ---
 
+Now that your website is alive and hosted, how do you start customizing it to have your content?
+
+If you already know how to file pull requests, feel free to start making edits as you see fit using some of the structure points we've noted below.
+
+If you are not familiar with pull requests, [read this guide to get started](https://www.ottrproject.org/writing_content.html). 
 
 
 ## Title
+
 To change the title of the website, modify the `name` line of the `_site.yml` file.
 
 ```{r, fig.align='center', fig.alt= "Change title", echo = FALSE, out.width="40%"}
@@ -22,7 +28,7 @@ The `href` specifies which rendered Rmd file to use for that tab, it needs to be
 
 The tabs are aligned to the left in the order listed.
 
-You can also add icons to these tabs using [font awesome](https://fontawesome.com/) as is shown for the contact page. 
+You can also add icons to these tabs using [font awesome](https://fontawesome.com/) as is shown for the contact page.
 
 ```{r, fig.align='center', fig.alt= "Page modification", echo = FALSE, out.width="40%"}
 knitr::include_graphics("resources/images/page_modification.png")

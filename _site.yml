@@ -9,8 +9,8 @@ navbar:
     href: setup.html
   - text: Hosting
     href: hosting.html
-  - text: Structure
-    href: structure.html
+  - text: Editing
+    href: editing.html    
   - text: Style
     href: style.html
   - text: Git Actions
