@@ -3,9 +3,18 @@ title: "Setup"
 output: html_document
 ---
 
-To enable the GitHub actions, your repository needs to be setup in a specific way.
+
+### Getting started
+
+Create your repository by clicking on the `Use this Template` button at [OTTR_Template_Website repository](https://github.com/jhudsl/OTTR_Template_Website)
+
+![](resources/images/create-repo.png)
+
+You'll need to make your repository `public`.
 
 ### Set your GH_PAT
+
+To enable the GitHub actions, your repository needs to be setup in a specific way.
 
 For OTTR GitHub actions to run, they need to have credentials through a personal access token.
 
@@ -18,6 +27,9 @@ knitr::include_graphics("resources/images/setting_gh_pat.png")
 ```
 
 ### Protect branches
+
+
+Although this isn't entirely required, its strongly recommended that you use these settings to protect your `main` branches.
 
 Click on settings in the far upper right corner:
 
