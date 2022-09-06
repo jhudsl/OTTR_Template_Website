@@ -7,8 +7,7 @@ Now that your website is alive and hosted, how do you start customizing it to ha
 
 If you already know how to file pull requests, feel free to start making edits as you see fit using some of the structure points we've noted below.
 
-If you are not familiar with pull requests, [read this guide to get started](https://www.ottrproject.org/writing_content.html). 
-
+If you are not familiar with pull requests, [read this guide to get started](https://www.ottrproject.org/writing_content.html).
 
 ## Title
 
