@@ -7,7 +7,7 @@ You might decide to use another package for your website.
 
 If you do so and the rendering does not appear to work like usual, this is because that package is not set up in the Docker image that the website template uses to render the files using GitHub Actions. 
 
-For example, you might want to add an interactive table to show some data one a page of your website using the `DT` package like below. 
+For example, you might want to add an interactive table to show some data on a page of your website using the `DT` package like below. 
 
 We will walk through how you could allow for this. 
 
