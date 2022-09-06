@@ -33,7 +33,7 @@ Next, simply replace the image called `favicon.ico` in the `images` directory wi
 
 To make additional changes to the style, you can modify the `styles.css` file with css code. This [website](https://www.w3schools.com/css/) has great information about css code.
 
-As an example if you wanted to change the color of the blue line to green you could change where it says `lightblue` to `lightgreen` in the `styles.css` file. You can also use a hex color code like those that can be found at this [website](https://htmlcolorcodes.com/), such as `#00FF9E` to get a specific shade. 
+As an example if you wanted to change the color of the blue line to green you could change where it says lightblue to lightgreen in the `styles.css` file.
 
 
 ```{r, fig.align='center', fig.alt= "Change color of line", echo = FALSE, out.width="80%"}

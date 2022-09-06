@@ -20,30 +20,28 @@ knitr::include_graphics("resources/images/title.png")
 
 ## Modifying pages
 
-Pages are specified in the navigation bar by the lines that say `-text:` and `href:` .
+Pages are specified in the navigation bar by the  lines that say `-text:` and `href:`.
 
-The `-text:` specifies what the navigation bar will say for that tab.
+The `-text` specifies what the navigation bar will say for that tab.
 
-The `href:` specifies which rendered Rmd file to use for that tab, it needs to be the html version of this file.
+The `href` specifies which rendered Rmd file to use for that tab, it needs to be the html version of this file.
 
-The tabs are specified to be aligned to the left (as specified by the `left` on line 5).
+The tabs are aligned to the left in the order listed.
 
-The tabs will appear in the order listed.
-
-You can also add icons to these tabs using [font awesome](https://fontawesome.com/) as is shown for the contact page on line 18.
+You can also add icons to these tabs using [font awesome](https://fontawesome.com/) as is shown for the contact page.
 
 ```{r, fig.align='center', fig.alt= "Page modification", echo = FALSE, out.width="40%"}
 knitr::include_graphics("resources/images/page_modification.png")
 ```
 
-Other icon options include [Bootstap glyphicons](https://www.w3schools.com/bootstrap/bootstrap_ref_comp_glyphs.asp) or [ion icons](https://ionic.io/ionicons). Note that **not all icons will work** because they are not all set up with the packages that make rendering the website possible, so this may require some trial and error.  Here is an example of how you would use all of these icon options to add more:
+Other icon options include [Bootstap glyphicons](https://www.w3schools.com/bootstrap/bootstrap_ref_comp_glyphs.asp) or [ion icons](https://ionic.io/ionicons). Note that **not all icons will work** because they are not all set up with the packages that make rendering the website possible, so this may require some trial and error.  Here is an example of how you would use both of these options:
 
 ```{r, fig.align='center', fig.alt= "more icon options", echo = FALSE, out.width="40%"}
 knitr::include_graphics("resources/images/more_icons.png")
 ```
 
 
-This would result in a navigation bar with these icons:
+This will result in a navigation bar with these icons:
 
 ```{r, fig.align='center', fig.alt= "more icon options", echo = FALSE, out.width="70%"}
 knitr::include_graphics("resources/images/more_icons_result.png")
