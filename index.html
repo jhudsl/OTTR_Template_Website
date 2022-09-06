@@ -13,8 +13,8 @@
 
 <title>Website Name</title>
 
-<script src="site_libs/header-attrs-2.10/header-attrs.js"></script>
-<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<script src="site_libs/header-attrs-2.14/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
@@ -61,6 +61,7 @@ if (window.hljs) {
 
 
 
+
 <link rel="stylesheet" href="styles.css" type="text/css" />
 
 
@@ -85,6 +86,9 @@ button.code-folding-btn:focus {
 }
 summary {
   display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
 }
 pre code {
   padding: 0;
@@ -237,7 +241,7 @@ $(document).ready(function () {
 <div class="navbar navbar-default  navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -247,7 +251,11 @@ $(document).ready(function () {
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="index.html">Home</a>
+  <a href="index.html">
+    <span class="fa fa-home"></span>
+     
+    Home
+  </a>
 </li>
 <li>
   <a href="setup.html">Setup</a>
@@ -296,12 +304,17 @@ $(document).ready(function () {
 </div>
 <div id="about" class="section level3">
 <h3><strong>About</strong></h3>
-<p>This website was created with the OTTR_Template_Website template. This enables simpler creation of websites that have automated checks for broken URLs and spelling errors, as well as automated rendering of all html files. No need to worry about git conflicts for html files!</p>
-<p>Here is how you can include images in your website pages (this one is saved in <code>resources/images</code> to keep things tidy:</p>
+<p>This website was created with the OTTR_Template_Website template.
+This enables simpler creation of websites that have automated checks for
+broken URLs and spelling errors, as well as automated rendering of all
+html files. No need to worry about git conflicts for html files!</p>
+<p>Here is how you can include images in your website pages (this one is
+saved in <code>resources/images</code> to keep things tidy:</p>
 <p><img src="resources/images/example_image.png" title="Example image" alt="Example image" width="30%" style="display: block; margin: auto;" /></p>
 <p>We will go through the following:</p>
 <ol style="list-style-type: decimal">
-<li>How to set up your repository to enable the GitHub actions of the template. (Setup tab)</li>
+<li>How to set up your repository to enable the GitHub actions of the
+template. (Setup tab)</li>
 <li>How to host your website using GitHub (Hosting tab)</li>
 <li>How to modify your website structure (Structure tab)</li>
 <li>How to change your website style (Style tab)</li>
