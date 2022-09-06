@@ -3,9 +3,24 @@ title: "Docker"
 output: html_document
 ---
 
+You might decide to use another package for your website. 
+
+If you do so and the rendering does not appear to work like usual, this is because that package is not set up in the Docker image that the website template uses to render the files using GitHub Actions. 
+
+For example, you might want to add an interactive table to show some data on a page of your website using the `DT` package like below. 
+
+We will walk through how you could allow for this. 
+
+```{r, echo = FALSE}
+DT::datatable(iris, 
+          options = list(pageLength = 5), 
+          rownames = FALSE
+)
+```
+
 ## Customizing Docker
 
-If you need to have the rendering of your website done by a customized docker image, you can [follow these instructions to start your own new docker image](https://www.ottrproject.org/customize-docker.html#Starting_a_new_Docker_image).
+If you need to have the rendering of your website done by a customized Docker image, you can [follow these instructions to start your own new docker image](https://www.ottrproject.org/customize-docker.html#Starting_a_new_Docker_image).
 
 In summary, you'll need to:
 
