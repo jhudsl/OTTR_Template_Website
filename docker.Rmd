@@ -5,18 +5,42 @@ output: html_document
 
 You might decide to use another package for your website. 
 
-If you do so and the rendering does not appear to work like usual, this is because that package is not set up in the Docker image that the website template uses to render the files using GitHub Actions. 
+If you do so and the rendering does not appear to work like usual, this is because that package is not set up in the Docker image that the website template uses to render the files using GitHub Actions.
 
-For example, you might want to add an interactive table to show some data on a page of your website using the `DT` package like below. 
+
+For example, you might want to add an emoji to your website using the [`emoji` package](https://cran.r-project.org/web/packages/emoji/emoji.pdf). 
+
+Note that if you wanted to add an emoji,you could simply copy and paste one from this [website](https://gist.github.com/rxaviers/7360908) and it would work. Like so: 😃 
+
+However,this will work well as a simple example to show how you might want to update the Docker image. 
 
 We will walk through how you could allow for this. 
 
-```{r, echo = FALSE}
-DT::datatable(iris, 
-          options = list(pageLength = 5), 
-          rownames = FALSE
-)
+```{r}
+emoji::emoji("smile")
 ```
+
+## An Example
+
+Let's say you added the following code to your R Markdown document for one of the website pages:
+
+```{r, fig.align='center', fig.alt= "Page modification", echo = FALSE, out.width="40%"}
+knitr::include_graphics("resources/images/emoji.png")
+```
+This would result in the following rendering issues:
+
+```{r, fig.align='center', fig.alt= "Page modification", echo = FALSE, out.width="40%"}
+knitr::include_graphics("resources/images/render_fail.png")
+```
+
+With this error:
+
+```{r, fig.align='center', fig.alt= "Page modification", echo = FALSE, out.width="40%"}
+knitr::include_graphics("resources/images/render_error.png")
+```
+So how can we fix this?
+
+You could make a new Docker image that includes the `emoji` package.
 
 ## Customizing Docker
 
