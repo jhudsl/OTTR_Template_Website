@@ -14,7 +14,7 @@ For example, you might want to add an emoji to your website using the [`emoji` p
 
 Note that if you wanted to add an emoji,you could simply copy and paste one from this [website](https://gist.github.com/rxaviers/7360908) and it would work. Like so: 😃 
 
-However, we will use this as a simple example to show how you why you might want to update the Docker image. 
+However, we will use this as a simple example to show why you might want to update the Docker image. 
 
 
 
