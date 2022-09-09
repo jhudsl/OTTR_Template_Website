@@ -4,7 +4,7 @@
 name: Build Docker Image
 
 on:
-  workflow_call:
+  workflow_dispatch:
     inputs:
       directory:
         required: true
