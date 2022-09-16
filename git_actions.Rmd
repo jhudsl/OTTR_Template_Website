@@ -2,7 +2,15 @@
 title: "Git Actions"
 output: html_document
 ---
+## Git Action Checks
 
+We have set up several checks for website content edits.
+
+When you create a pull request, you will see something like this if everything is successful.
+
+```{r, fig.align='center', fig.alt= "PR checks", echo = FALSE, out.width="70%"}
+knitr::include_graphics("resources/images/checks.png")
+```
 ## Spelling and Style Action
 
 You may find that you have spelling errors if you get the following message from your pull request (PR):
