@@ -40,3 +40,4 @@ knitr::include_graphics("resources/images/checks2.png")
 If you are only working on this yourself without others you can click the `Merge without waiting for requirements to be met` box, so that you can click the `Merge pull request` button. 
 
 https://github.com/jhudsl/OTTR_Template_Website/issues/39
+https://github.com/jhudsl/OTTR_Template_Website/issues/40
