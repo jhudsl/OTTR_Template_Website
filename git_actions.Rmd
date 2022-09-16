@@ -11,6 +11,7 @@ When you create a pull request, you will see something like this if everything i
 ```{r, fig.align='center', fig.alt= "PR checks", echo = FALSE, out.width="70%"}
 knitr::include_graphics("resources/images/checks.png")
 ```
+
 ## Spelling and Style Action
 
 You may find that you have spelling errors if you get the following message from your pull request (PR):
@@ -28,3 +29,14 @@ For words that are indeed misspelled, fix the errors and push your changes to yo
 You should then see that your PR has a different message that tells you that you have no spelling errors.
 
 
+## Completing a Pull Request
+
+Once all the Git Action checks pass, you can merge your PR to your main branch for your website.
+
+```{r, fig.align='center', fig.alt= "finishing a PR", echo = FALSE, out.width="80%"}
+knitr::include_graphics("resources/images/checks2.png")
+```
+
+If you are only working on this yourself without others you can click the `Merge without waiting for requirements to be met` box, so that you can click the `Merge pull request` button. 
+
+www.brokenurl.url
