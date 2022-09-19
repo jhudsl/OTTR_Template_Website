@@ -24,3 +24,16 @@ Select the main branch and the root directory and press save. Be sure to also ch
 ```{r, fig.align='center', fig.alt= "setup website hosting", echo = FALSE, out.width="80%"}
 knitr::include_graphics("resources/images/website_setup.png")
 ```
+
+Note that in general, your website will be published to a URL like this:
+
+```
+https://username.github.io/repository_name/
+```
+If you have multiple websites published underneath your username or organization, this should still publish fine. This website will be a subdirectory that is named whatever you have named this repository.
+
+If you've published this website underneath a GitHub organization (not your own personal GitHub profile), then in the above example URL the organization name will be where we've put `username`.
+
+For more about GitHub pages (including how to personalize your URL) see the GitHub pages documentation here: https://pages.github.com/
+
+Sometimes, GitHub page publishing will take a bit of time. You can click on the `Actions` tab in your repository and see if there is a `pages and deployment` action currently running (indicated by a yellow circle next to the action name). If this is the case, you will need to wait until this becomes a green check mark before your GitHub page will be published.
