@@ -151,7 +151,7 @@ jobs:
             _Comment updated at ${{ steps.build-components.outputs.time }} with changes from ${{ steps.build-components.outputs.commit_id }}_
           edit-mode: replace
 
-url-check:
+  url-check:
     name: Check URLs
     needs: yaml-check
     runs-on: ubuntu-latest
