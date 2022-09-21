@@ -42,9 +42,6 @@ Other icon options include [Bootstap glyphicons](https://www.w3schools.com/boots
 knitr::include_graphics("resources/images/more_icons.png")
 ```
 
-```{r}
-adf
-```
 
 This would result in a navigation bar with these icons:
 
