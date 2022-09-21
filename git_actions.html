@@ -247,7 +247,11 @@ $(document).ready(function () {
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="index.html">Home</a>
+  <a href="index.html">
+    <span class="fa fa-home"></span>
+     
+    Home
+  </a>
 </li>
 <li>
   <a href="setup.html">Setup</a>
@@ -291,6 +295,12 @@ $(document).ready(function () {
 </div>
 
 
+<div id="git-action-checks" class="section level2">
+<h2>Git Action Checks</h2>
+<p>We have set up several checks for website content edits.</p>
+<p>When you create a pull request, you will see something like this if everything is successful.</p>
+<p><img src="resources/images/checks.png" title="PR checks" alt="PR checks" width="70%" style="display: block; margin: auto;" /></p>
+</div>
 <div id="spelling-and-style-action" class="section level2">
 <h2>Spelling and Style Action</h2>
 <p>You may find that you have spelling errors if you get the following message from your pull request (PR):</p>
@@ -299,6 +309,12 @@ $(document).ready(function () {
 <p>Add words that are not actually misspelled to the <code>dictionary.txt</code> file located in the <code>resources</code> directory. It’s a good idea to try to keep this in alphabetical order.</p>
 <p>For words that are indeed misspelled, fix the errors and push your changes to your PR.</p>
 <p>You should then see that your PR has a different message that tells you that you have no spelling errors.</p>
+</div>
+<div id="completing-a-pull-request" class="section level2">
+<h2>Completing a Pull Request</h2>
+<p>Once all the Git Action checks pass, you can merge your PR to your main branch for your website.</p>
+<p><img src="resources/images/checks2.png" title="finishing a PR" alt="finishing a PR" width="80%" style="display: block; margin: auto;" /></p>
+<p>If you are only working on this yourself without others you can click the <code>Merge without waiting for requirements to be met</code> box, so that you can click the <code>Merge pull request</code> button.</p>
 </div>
 
 

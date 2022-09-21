@@ -247,7 +247,11 @@ $(document).ready(function () {
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="index.html">Home</a>
+  <a href="index.html">
+    <span class="fa fa-home"></span>
+     
+    Home
+  </a>
 </li>
 <li>
   <a href="setup.html">Setup</a>
@@ -300,6 +304,12 @@ $(document).ready(function () {
 <p><img src="resources/images/pages.png" title="Clicking on pages" alt="Clicking on pages" width="80%" style="display: block; margin: auto;" /></p>
 <p>Select the main branch and the root directory and press save. Be sure to also check the “Enforce HTTPS” box. Afterwards your repository should look like this:</p>
 <p><img src="resources/images/website_setup.png" title="setup website hosting" alt="setup website hosting" width="80%" style="display: block; margin: auto;" /></p>
+<p>Note that in general, your website will be published to a URL like this:</p>
+<pre><code>https://username.github.io/repository_name/</code></pre>
+<p>If you have multiple websites published underneath your username or organization, this should still publish fine. This website will be a subdirectory that is named whatever you have named this repository.</p>
+<p>If you’ve published this website underneath a GitHub organization (not your own personal GitHub profile), then in the above example URL the organization name will be where we’ve put <code>username</code>.</p>
+<p>For more about GitHub pages (including how to personalize your URL) see the GitHub pages documentation here: <a href="https://pages.github.com/" class="uri">https://pages.github.com/</a></p>
+<p>Sometimes, GitHub page publishing will take a bit of time. You can click on the <code>Actions</code> tab in your repository and see if there is a <code>pages and deployment</code> action currently running (indicated by a yellow circle next to the action name). If this is the case, you will need to wait until this becomes a green check mark before your GitHub page will be published.</p>
 </div>
 
 
