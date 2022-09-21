@@ -2,16 +2,18 @@
 title: "Git Actions"
 output: html_document
 ---
-## Git Action Checks
+
 
 We have set up several checks for website content edits.
 
-When you create a pull request, you will see something like this if everything is successful.
+When you create a pull request, you will see something like this if everything is successful. You can click on the `preview of the wbsite here` link to see a preview. Please note that some features may not be possible to see in the preview. For example, icons may only show up as a box.
 
 ```{r, fig.align='center', fig.alt= "PR checks", echo = FALSE, out.width="70%"}
 knitr::include_graphics("resources/images/checks.png")
 ```
+## Rendering Action
 
+If the rendering action failed, click on 
 ## Spelling and Style Action
 
 You may find that you have spelling errors if you get the following message from your pull request (PR):
@@ -28,6 +30,20 @@ For words that are indeed misspelled, fix the errors and push your changes to yo
 
 You should then see that your PR has a different message that tells you that you have no spelling errors.
 
+## URL Check
+
+You may find that you have broken URLs. If so you will get this message when you create a Pull Request.
+
+```{r, fig.align='center', fig.alt= "URL issue PR image", echo = FALSE, out.width="80%"}
+knitr::include_graphics("resources/images/url_check.png")
+```
+You can click on the `Download the errors here` link to see a document with a list of broken URLs and what files they are located in, like this:
+
+```{r, fig.align='center', fig.alt= "broken url list", echo = FALSE, out.width="80%"}
+knitr::include_graphics("resources/images/urls.png")
+```
+
+Here we can see that there are two URLs that are broken in the `git_actions.Rmd` file.
 
 ## Completing a Pull Request
 
@@ -39,6 +55,4 @@ knitr::include_graphics("resources/images/checks2.png")
 
 If you are only working on this yourself without others you can click the `Merge without waiting for requirements to be met` box, so that you can click the `Merge pull request` button. 
 
-[Link](https://bit.ly/ITCR_2023)
-[link](https://www.fredhutch2.org/)
-[link](https://www.fredhutch3.org/)
+
