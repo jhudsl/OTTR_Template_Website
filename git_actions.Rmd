@@ -2,14 +2,34 @@
 title: "Git Actions"
 output: html_document
 ---
-## Git Action Checks
+
 
 We have set up several checks for website content edits.
 
-When you create a pull request, you will see something like this if everything is successful.
+When you create a pull request, you will see something like this if everything is successful. You can click on the `preview of the wbsite here` link to see a preview. Please note that some features may not be possible to see in the preview. For example, icons may only show up as a box.
 
 ```{r, fig.align='center', fig.alt= "PR checks", echo = FALSE, out.width="70%"}
 knitr::include_graphics("resources/images/checks.png")
+```
+## Rendering Action
+
+If the rendering action fails, you will see something like this:
+
+```{r, fig.align='center', fig.alt= "render issue PR image", echo = FALSE, out.width="80%"}
+knitr::include_graphics("resources/images/render_fail.png")
+```
+
+If you click on where it says `Details` on the far right, you will be taken to more information about what may have gone wrong.
+
+```{r, fig.align='center', fig.alt= "render issue PR image", echo = FALSE, out.width="80%"}
+knitr::include_graphics("resources/images/render_fail2.png")
+```
+
+
+For example, we can see that an R object was not found in this case in one of the files. You could identify which file by scrolling up.
+
+```{r, fig.align='center', fig.alt= "render issue PR image", echo = FALSE, out.width="80%"}
+knitr::include_graphics("resources/images/render_fail_details.png")
 ```
 
 ## Spelling and Style Action
@@ -28,6 +48,20 @@ For words that are indeed misspelled, fix the errors and push your changes to yo
 
 You should then see that your PR has a different message that tells you that you have no spelling errors.
 
+## URL Check
+
+You may find that you have broken URLs. If so you will get this message when you create a Pull Request.
+
+```{r, fig.align='center', fig.alt= "URL issue PR image", echo = FALSE, out.width="80%"}
+knitr::include_graphics("resources/images/url_check.png")
+```
+You can click on the `Download the errors here` link to see a document with a list of broken URLs and what files they are located in, like this:
+
+```{r, fig.align='center', fig.alt= "broken url list", echo = FALSE, out.width="80%"}
+knitr::include_graphics("resources/images/urls.png")
+```
+
+Here we can see that there are two URLs that are broken in the `git_actions.Rmd` file.
 
 ## Completing a Pull Request
 
