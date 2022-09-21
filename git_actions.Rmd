@@ -13,7 +13,8 @@ knitr::include_graphics("resources/images/checks.png")
 ```
 ## Rendering Action
 
-If the rendering action failed, click on 
+
+
 ## Spelling and Style Action
 
 You may find that you have spelling errors if you get the following message from your pull request (PR):
