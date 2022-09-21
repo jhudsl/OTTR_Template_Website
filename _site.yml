@@ -5,12 +5,13 @@ navbar:
   left:
   - text: Home
     href: index.html
+    icon: fa-home
   - text: Setup
     href: setup.html
   - text: Hosting
     href: hosting.html
   - text: Editing
-    href: editing.html    
+    href: editing.html
   - text: Style
     href: style.html
   - text: Git Actions
