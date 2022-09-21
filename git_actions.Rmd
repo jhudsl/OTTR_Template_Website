@@ -39,4 +39,6 @@ knitr::include_graphics("resources/images/checks2.png")
 
 If you are only working on this yourself without others you can click the `Merge without waiting for requirements to be met` box, so that you can click the `Merge pull request` button. 
 
-
+[Link](https://bit.ly/ITCR_2023)
+[link](https://www.fredhutch2.org/)
+[link](https://www.fredhutch3.org/)
