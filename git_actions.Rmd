@@ -13,7 +13,24 @@ knitr::include_graphics("resources/images/checks.png")
 ```
 ## Rendering Action
 
+If the rendering action fails, you will see something like this:
 
+```{r, fig.align='center', fig.alt= "render issue PR image", echo = FALSE, out.width="80%"}
+knitr::include_graphics("resources/images/render_fail.png")
+```
+
+If you click on where it says `Details` on the far right, you will be taken to more information about what may have gone wrong.
+
+```{r, fig.align='center', fig.alt= "render issue PR image", echo = FALSE, out.width="80%"}
+knitr::include_graphics("resources/images/render_fail2.png")
+```
+
+
+For example, we can see that an R object was not found in this case in one of the files. You could identify which file by scrolling up.
+
+```{r, fig.align='center', fig.alt= "render issue PR image", echo = FALSE, out.width="80%"}
+knitr::include_graphics("resources/images/render_fail_details.png")
+```
 
 ## Spelling and Style Action
 
