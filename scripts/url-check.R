@@ -12,9 +12,6 @@ root_dir <- rprojroot::find_root(rprojroot::has_dir(".git"))
 ignore_urls_file <- file.path(root_dir, "resources", "ignore-urls.txt")
 
 if (!file.exists(ignore_urls_file)) {
-  if (!dir.exists("resources")) {
-    dir.create("resources")
-  }
   message(paste("No ignore URLs text file found at:", ignore_urls_file, "downloading one from the main OTTR Template repo"))
   download.file("https://raw.githubusercontent.com/jhudsl/OTTR_Template/main/resources/ignore-urls.txt",
                destfile = ignore_urls_file)
@@ -32,20 +29,23 @@ files <- list.files(path = root_dir, pattern = 'md$', full.names = TRUE)
 
 test_url <- function(url) {
   message(paste0("Testing: ", url))
-  url_status <- try(httr::GET(url), silent = TRUE)
   
+  url_status <- try(httr::GET(url), silent = TRUE)
+
   # Fails if host can't be resolved
   status <- ifelse(suppressMessages(grepl("Could not resolve host", url_status)), "failed", "success")
   
   if (status == "success") {
     # Fails if 404'ed
-    status <- ifelse(httr::status_code(httr::GET(url)) == 404, "failed", "success")
+    status <- ifelse(try(httr::GET(url)$status_code, silent = TRUE) == 404, "failed", "success")
   }
-  
+
   return(status)
 }
 
 get_urls <- function(file) {
+  message(paste("Now testing URLs in file:", file))
+  
   # Read in a file and return the urls from it
   content <- readLines(file)
   content <- grep("http[s]?://", content, value = TRUE)
