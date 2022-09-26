@@ -6,7 +6,7 @@ output: html_document
 
 We have set up several checks for website content edits.
 
-When you create a pull request, you will see something like this if everything is successful. You can click on the `preview of the wbsite here` link to see a preview. Please note that some features may not be possible to see in the preview. For example, icons may only show up as a box.
+When you create a pull request, you will see something like this if everything is successful. You can click on the `preview of the website here` link to see a preview. Please note that some features may not be possible to see in the preview. For example, icons may only show up as a box.
 
 ```{r, fig.align='center', fig.alt= "PR checks", echo = FALSE, out.width="70%"}
 knitr::include_graphics("resources/images/checks.png")
