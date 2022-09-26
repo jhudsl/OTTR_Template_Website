@@ -11,6 +11,7 @@ When you create a pull request, you will see something like this if everything i
 ```{r, fig.align='center', fig.alt= "PR checks", echo = FALSE, out.width="70%"}
 knitr::include_graphics("resources/images/checks.png")
 ```
+
 ## Rendering Action
 
 If the rendering action fails, you will see something like this:
