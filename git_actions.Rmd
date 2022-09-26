@@ -72,6 +72,6 @@ Once all the Git Action checks pass, you can merge your pull request to your mai
 knitr::include_graphics("resources/images/checks2.png")
 ```
 
-If you are only working on this yourself without others you can click the `Merge without waiting for requirements to be met` box, so that you can click the `Merge pull request` button. 
+If you are only working on this yourself without others to review your pull request, you can click the `Merge without waiting for requirements to be met` box, so that you can click the `Merge pull request` button. 
 
 
