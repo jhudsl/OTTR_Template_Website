@@ -15,10 +15,6 @@ group:
         dest: .github/workflows/docker-test.yml
       - source: .github/workflows/pull_request.yml
         dest: .github/workflows/render-site.yml
-      - source: scripts/spell-check.R
-        dest: scripts/spell-check.R
-      - source: scripts/url-check.R
-        dest: scripts/url-check.R
       - source: config_automation.yml
         dest: config_automation.yml
   # Repositories to receive changes
@@ -37,5 +33,3 @@ group:
   #     dest: scripts/spell-check.R
   #   repos: |
   #     jhudsl/Baltimore_Community_Course
-
-
