@@ -29,8 +29,6 @@ jobs:
 
       # Make the branch fresh
       - name: Make the branch fresh
-
-      - name: Make branch if it doesn't exist
         run: |
           git config --system --add safe.directory $GITHUB_WORKSPACE
           git config --local user.email "itcrtrainingnetwork@gmail.com"
