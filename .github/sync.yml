@@ -21,6 +21,13 @@ group:
     repos: |
       jhudsl/ottr-website
       jhudsl/Baltimore_Community_Course
+      maculatus/test-ottr-website
+      dr-sayyadhury/OTTR_Template_Website_repo
+      whalera1901/Current-projects
+      GenetcXBiotech1/Dr.Fierst_lab
+      buriedsand/glbio-personal-website
+      PurplFeesh/test-ottr-site
+      jcha40/ottr_test_site
 ###ADD NEW REPO HERE following the format above#
 
 ### These are custom groups for syncing -- not all files needs to be synced # will update later
