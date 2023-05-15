@@ -306,7 +306,7 @@ $(document).ready(function () {
 <p>To enable the GitHub actions, your repository needs to be setup in a specific way.</p>
 <p>For OTTR GitHub actions to run, they need to have credentials through a personal access token.</p>
 <ol style="list-style-type: decimal">
-<li><p>Set up your own personal access token <a href="https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token">following these instructions</a>. Keep this personal access token handy for the next step. When you get to the permissions page, check the box that says <code>repo</code> and select all that is underneath that header. No other permissions are necessary.</p></li>
+<li><p>Set up your own personal access token <a href="https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token">following these instructions</a> - but create a classic token. Keep this personal access token handy for the next step. When you get to the permissions page, check the box that says <code>repo</code> and select all that is underneath that header. No other permissions are necessary.</p></li>
 <li><p>In your new OTTR_Template_Website derived repository, go to Settings &gt; Secrets &gt; Actions. Click <code>New Repository Secret</code>. In the window opened, name this new secret <code>GH_PAT</code> and paste the personal access token in the box below. (Note that the name <code>GH_PAT</code> is specific to how OTTR works and other secret names cannot be used and for OTTR to still work).</p></li>
 </ol>
 <p><img src="resources/images/setting_gh_pat.png" title="Clicking on settings" alt="Clicking on settings" width="80%" style="display: block; margin: auto;" /></p>
