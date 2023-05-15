@@ -48,5 +48,5 @@ Banner text!
 </div>
 ```
 
-Also checkout the [R Markdown cheatsheet]( https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf) for more customization of the pages.
+Also checkout the [R Markdown cheatsheet](https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf) for more customization of the pages.
 

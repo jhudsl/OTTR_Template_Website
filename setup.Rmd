@@ -18,7 +18,7 @@ To enable the GitHub actions, your repository needs to be setup in a specific wa
 
 For OTTR GitHub actions to run, they need to have credentials through a personal access token.
 
-1. Set up your own personal access token [following these instructions](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token). Keep this personal access token handy for the next step. When you get to the permissions page, check the box that says `repo` and select all that is underneath that header. No other permissions are necessary.
+1. Set up your own personal access token [following these instructions](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) - but create a classic token. Keep this personal access token handy for the next step. When you get to the permissions page, check the box that says `repo` and select all that is underneath that header. No other permissions are necessary.
 
 2. In your new OTTR_Template_Website derived repository, go to Settings > Secrets > Actions. Click `New Repository Secret`. In the window opened, name this new secret `GH_PAT` and paste the personal access token in the box below. (Note that the name `GH_PAT` is specific to how OTTR works and other secret names cannot be used and for OTTR to still work).
 
