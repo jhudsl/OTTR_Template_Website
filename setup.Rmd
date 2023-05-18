@@ -26,6 +26,18 @@ For OTTR GitHub actions to run, they need to have credentials through a personal
 knitr::include_graphics("resources/images/setting_gh_pat.png")
 ```
 
+### Allow GitHub Actions
+
+Go to the settings menu for your repository that you created from the template. This should be located at the top of GitHub on the right side. 
+
+Scroll down to the "Actions" button and click it, then click "General".
+
+Scroll down to the workflow permissions section and select "Read and write permissions", then click "Allow GitHub actions to create and approve pull requests.
+
+
+Finally, click "save".
+
+
 ### Protect branches
 
 
