@@ -89,9 +89,7 @@ knitr::include_graphics("resources/images/actions.png")
 knitr::include_graphics("resources/images/general.png")
 ```
 
-```{r, fig.align='center', fig.alt= "allowing workflows", echo = FALSE, out.width="80%"}
-knitr::include_graphics("resources/images/workflows.png")
-```
+
 
 Scroll down to the workflow permissions section and select "Read and write permissions", then click "Allow GitHub actions to create and approve pull requests.
 
