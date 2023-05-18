@@ -18,9 +18,59 @@ To enable the GitHub actions, your repository needs to be setup in a specific wa
 
 For OTTR GitHub actions to run, they need to have credentials through a personal access token.
 
-1. Set up your own personal access token [following these instructions](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) - but create a classic token. Keep this personal access token handy for the next step. When you get to the permissions page, check the box that says `repo` and select all that is underneath that header. No other permissions are necessary.
+1. Set up your own personal access token [following these instructions](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) - but create a **classic token**. Keep this personal access token handy for the next step. When you get to the permissions page, check the box that says `repo` and select all that is underneath that header. No other permissions are necessary.
 
-2. In your new OTTR_Template_Website derived repository, go to Settings > Secrets > Actions. Click `New Repository Secret`. In the window opened, name this new secret `GH_PAT` and paste the personal access token in the box below. (Note that the name `GH_PAT` is specific to how OTTR works and other secret names cannot be used and for OTTR to still work).
+<details><summary>The instructions for this step may change with updates to GitHub, but click on these instructions for more info on the directions from when OTTR Web was last updated.</summary>
+
+First, go to your username settings, by clicking on your user icon (upper right corner) and scrolling down to settings. 
+
+```{r, fig.align='center', fig.alt= "User settings", echo = FALSE, out.width="20%"}
+knitr::include_graphics("resources/images/usersettings.png")
+```
+
+
+Next, scroll all the way down on the far right menu to "Developer Settings".
+
+```{r, fig.align='center', fig.alt= "User settings", echo = FALSE, out.width="80%"}
+knitr::include_graphics("resources/images/developer_settings.png")
+```
+
+
+Then select "Personal Access Tokens" and "Tokens (classic)"
+
+```{r, fig.align='center', fig.alt= "classic tokens", echo = FALSE, out.width="40%"}
+knitr::include_graphics("resources/images/classic_tokens.png")
+```
+
+Then click "Generate new token" and confirm that you want classic.
+
+```{r, fig.align='center', fig.alt= "generate classic token", echo = FALSE, out.width="80%"}
+knitr::include_graphics("resources/images/generate_classic.png")
+```
+
+Finally, add a name select all the repo scopes and scroll down to the green button to generate the token. Copy this somewhere safe to then paste into your repository settings. 
+
+```{r, fig.align='center', fig.alt= "set up token", echo = FALSE, out.width="80%"}
+knitr::include_graphics("resources/images/set_up_token.png")
+```
+
+</details>
+
+2. In your new OTTR_Template_Website derived repository, go to Settings > Secrets and variables > Actions. Click `New Repository Secret`. 
+
+```{r, fig.align='center', fig.alt= "classic tokens", echo = FALSE, out.width="80%"}
+knitr::include_graphics("resources/images/repo_action_token.png")
+```
+
+
+```{r, fig.align='center', fig.alt= "new repository secret", echo = FALSE, out.width="80%"}
+knitr::include_graphics("resources/images/gh_pat_set_up.png")
+```
+
+
+In the window opened, name this new secret `GH_PAT` and paste the personal access token in the box below. (Note that the name `GH_PAT` is specific to how OTTR works and other secret names cannot be used and for OTTR to still work).
+
+Click the green button to add the secret.
 
 ```{r, fig.align='center', fig.alt= "Clicking on settings", echo = FALSE, out.width="80%"}
 knitr::include_graphics("resources/images/setting_gh_pat.png")
@@ -31,12 +81,25 @@ knitr::include_graphics("resources/images/setting_gh_pat.png")
 Go to the settings menu for your repository that you created from the template. This should be located at the top of GitHub on the right side. 
 
 Scroll down to the "Actions" button and click it, then click "General".
+```{r, fig.align='center', fig.alt= "allowing workflows", echo = FALSE, out.width="40%"}
+knitr::include_graphics("resources/images/actions.png")
+```
+
+```{r, fig.align='center', fig.alt= "allowing workflows", echo = FALSE, out.width="80%"}
+knitr::include_graphics("resources/images/general.png")
+```
+
+```{r, fig.align='center', fig.alt= "allowing workflows", echo = FALSE, out.width="80%"}
+knitr::include_graphics("resources/images/workflows.png")
+```
 
 Scroll down to the workflow permissions section and select "Read and write permissions", then click "Allow GitHub actions to create and approve pull requests.
 
-
 Finally, click "save".
 
+```{r, fig.align='center', fig.alt= "allowing workflows", echo = FALSE, out.width="80%"}
+knitr::include_graphics("resources/images/workflows.png")
+```
 
 ### Protect branches
 
