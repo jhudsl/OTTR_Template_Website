@@ -15,7 +15,7 @@ knitr::include_graphics("resources/images/navbar.png")
 
 ## Overall theme
 
-To change the color scheme/fonts of the website modify the `theme` in the `_site.yml` file (see [here](https://www.datadreaming.org/post/r-markdown-theme-gallery/) for options):
+To change the color scheme/fonts of the website modify the `theme` in the `_site.yml` file (see [here](https://bookdown.org/yihui/blogdown/themes.html) for options):
 
 ```{r, fig.align='center', fig.alt= "Change theme", echo = FALSE, out.width="40%"}
 knitr::include_graphics("resources/images/theme.png")
