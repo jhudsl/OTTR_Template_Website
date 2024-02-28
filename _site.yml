@@ -16,11 +16,8 @@ navbar:
     href: style.html
   - text: 4. Git Actions
     href: git_actions.html
-  - text: Docker
-    href: docker.html
-  - text: Contact
-    href: contact.html
-    icon: fa-envelope
+  - text: More ottr docs
+    href: https://www.ottrproject.org/
 
 
 output:
