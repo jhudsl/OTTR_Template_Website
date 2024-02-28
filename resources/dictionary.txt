@@ -16,3 +16,8 @@ Rmd
 subdir
 th
 www
+automations
+Bootstap
+glyphicons
+repo
+RStudio
