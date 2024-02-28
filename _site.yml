@@ -3,7 +3,7 @@ output_dir: '.'
 navbar:
   title: OTTR Web
   left:
-  - text: 0. Home
+  - text: ""
     href: index.html
     icon: fa-home
   - text: 1. Setup
