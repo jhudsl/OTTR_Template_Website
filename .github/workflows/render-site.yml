@@ -15,7 +15,6 @@ on:
       - '**.Rmd'
       - styles.css
       - _site.yml
-      - subdir_html/*.Rmd
       - resources/images/*.png
       - resources/images/favicon.ico
       - site_libs/*
@@ -63,11 +62,6 @@ jobs:
         id: site
         run: Rscript -e "rmarkdown::render_site()"
 
-      # We may have html files that we want to render to add as links on the pages -these will be stored in a dir called subdir_html
-      - name: Render subdir_html
-        id: subdir_html
-        run: Rscript -e "for (i in list.files(path = './subdir_html', pattern = 'Rmd$', recursive = TRUE, full.names = TRUE)){rmarkdown::render(i)}"
-
       # This checks on the steps before it and makes sure that they completed.
       # If the renders didn't complete we don't want to commit the file changes
       - name: Check on render steps
@@ -82,8 +76,7 @@ jobs:
           git config --system --add safe.directory $GITHUB_WORKSPACE
           git config --local user.email "actions@github.com"
           git config --local user.name "GitHub Actions"
-          git add --force *.html
-          git add --force subdir_html/*.html
+          git add --force docs/*
           git add --force site_libs/*
           git commit -m 'Render site' || echo "No changes to commit"
           git push origin main || echo "No changes to push"
