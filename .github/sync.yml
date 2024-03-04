@@ -31,6 +31,7 @@ group:
       PurplFeesh/test-ottr-site
       jcha40/ottr_test_site
       jhudsl/ITCR_Tables
+      fhdsl/ITN_search
 ###ADD NEW REPO HERE following the format above#
 
 ### These are custom groups for syncing -- not all files needs to be synced # will update later
