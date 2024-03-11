@@ -78,3 +78,13 @@ jobs:
           git add --force docs/*
           git commit -m 'Render site' || echo "No changes to commit"
           git push origin main || echo "No changes to push"
+
+      - name: Website preview for download
+        run: zip website-preview.zip docs/* -r
+
+      - name: Upload artifact for deployment job
+        uses: actions/upload-artifact@v2
+        with:
+          name: website-preview
+          path: website-preview.zip
+          
