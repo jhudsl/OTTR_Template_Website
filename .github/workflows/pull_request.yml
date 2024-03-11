@@ -145,10 +145,11 @@ jobs:
         run: |
           course_name=$(head -n 1 _website.yml | cut -d'"' -f 2| tr " " "-")
           website_link=$(echo "https://htmlpreview.github.io/?https://raw.githubusercontent.com/$GITHUB_REPOSITORY/preview-${{ github.event.pull_request.number }}/docs/index.html")
-          docs_link=$(echo "https://raw.githubusercontent.com/$GITHUB_REPOSITORY/preview-${{ github.event.pull_request.number }}/website-preview.zip")
-          echo ::set-output name=website_link::$website_link
-          echo ::set-output name=time::$(date +'%Y-%m-%d')
-          echo ::set-output name=commit_id::$GITHUB_SHA
+          docs_link=$(echo "https://github.com/$GITHUB_REPOSITORY/raw/preview-${{ github.event.pull_request.number }}/website-preview.zip")
+          echo "docs_link=$docs_link" >> $GITHUB_OUTPUT
+          echo "website_link=$website_link" >> $GITHUB_OUTPUT
+          echo "time=$(date +'%Y-%m-%d')" >> $GITHUB_OUTPUT
+          echo "commit_id=$GITHUB_SHA" >> $GITHUB_OUTPUT
           echo ${{steps.commit.outputs.changes}}
 
       - name: Create or update comment
@@ -159,7 +160,7 @@ jobs:
           issue-number: ${{ github.event.pull_request.number }}
           body: |
             Quick preview for the latest commit: See [preview of website here](${{ steps.build-components.outputs.website_link }})
-            Comprehensive [downloadable preview files](${{ steps.build-components.outputs.docs_link}})
+            Comprehensive [downloadable preview files](${{ steps.build-components.outputs.docs_link }})
 
             _Updated at ${{ steps.build-components.outputs.time }} with changes from ${{ steps.build-components.outputs.commit_id }}_
           edit-mode: replace
@@ -175,3 +176,5 @@ jobs:
 
             _Updated at ${{ steps.build-components.outputs.time }} with changes from ${{ steps.build-components.outputs.commit_id }}_
           edit-mode: replace
+
+
