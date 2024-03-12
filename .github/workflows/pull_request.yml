@@ -30,8 +30,10 @@ jobs:
       # Make the branch fresh
       - name: Make the branch fresh
         run: |
-          git config --local user.email "itcrtrainingnetwork@gmail.com"
-          git config --local user.name "jhudsl-robot"
+          git config --global --add safe.directory $GITHUB_WORKSPACE
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+
           branch_name='preview-${{ github.event.pull_request.number }}'
           echo branch doesnt exist
           git checkout -b $branch_name || echo branch exists
@@ -83,9 +85,9 @@ jobs:
       # Set up git checkout
       - name: Set up git checkout
         run: |
-          git config --system --add safe.directory $GITHUB_WORKSPACE
-          git config --local user.email "itcrtrainingnetwork@gmail.com"
-          git config --local user.name "jhudsl-robot"
+          git config --global --add safe.directory $GITHUB_WORKSPACE
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
 
           branch_name='preview-${{ github.event.pull_request.number }}'
           git fetch --all
@@ -112,7 +114,7 @@ jobs:
 
       - name: Website preview for download
         run: zip website-preview.zip docs/* -r
-        
+
       # Commit the rendered website files
       - name: Commit rendered website files to preview branch
         id: commit
@@ -131,7 +133,7 @@ jobs:
         with:
           name: website-preview
           path: website-preview.zip
-          
+
       - name: Find Comment
         uses: peter-evans/find-comment@v1
         id: fc
@@ -159,8 +161,8 @@ jobs:
           comment-id: ${{ steps.fc.outputs.comment-id }}
           issue-number: ${{ github.event.pull_request.number }}
           body: |
-            Quick preview for the latest commit: See [preview of website here](${{ steps.build-components.outputs.website_link }})
-            Comprehensive [downloadable preview files](${{ steps.build-components.outputs.docs_link }})
+            Quick preview for the latest commit: See [preview of website here](${{ steps.build-components.outputs.website_link }}) -- note not all html features will be properly displayed but it will give you a rough idea.
+            For a comprehensive preview [download the preview files by clicking this link](${{ steps.build-components.outputs.docs_link }}).
 
             _Updated at ${{ steps.build-components.outputs.time }} with changes from ${{ steps.build-components.outputs.commit_id }}_
           edit-mode: replace
@@ -176,5 +178,3 @@ jobs:
 
             _Updated at ${{ steps.build-components.outputs.time }} with changes from ${{ steps.build-components.outputs.commit_id }}_
           edit-mode: replace
-
-
