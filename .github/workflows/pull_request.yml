@@ -128,12 +128,6 @@ jobs:
           git push --force || echo "No changes to commit"
         shell: bash
 
-      - name: Upload artifact for deployment job
-        uses: actions/upload-artifact@v2
-        with:
-          name: website-preview
-          path: website-preview.zip
-
       - name: Find Comment
         uses: peter-evans/find-comment@v1
         id: fc
