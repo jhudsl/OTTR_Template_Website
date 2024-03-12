@@ -161,9 +161,10 @@ jobs:
           comment-id: ${{ steps.fc.outputs.comment-id }}
           issue-number: ${{ github.event.pull_request.number }}
           body: |
-            Quick preview for the latest commit: See [preview of website here](${{ steps.build-components.outputs.website_link }}) -- note not all html features will be properly displayed but it will give you a rough idea.
-            For a comprehensive preview [download the preview files by clicking this link](${{ steps.build-components.outputs.docs_link }}).
-
+            :eyes: [Quick preview of website here](${{ steps.build-components.outputs.website_link }})
+            :microscope: [Comprehensive download of the website here](${{ steps.build-components.outputs.docs_link }})
+            \* note not all html features will be properly displayed but it will give you a rough idea.
+            
             _Updated at ${{ steps.build-components.outputs.time }} with changes from ${{ steps.build-components.outputs.commit_id }}_
           edit-mode: replace
 
