@@ -166,7 +166,7 @@ jobs:
             
             \* note not all html features will be properly displayed but it will give you a rough idea.
             
-            _Updated at ${{ steps.build-components.outputs.time }} with changes from ${{ steps.build-components.outputs.commit_id }}_
+            _Updated at ${{ steps.build-components.outputs.time }} with changes from the latest commit ${{ steps.build-components.outputs.commit_id }}_
           edit-mode: replace
 
       - name: No comment if no changes
