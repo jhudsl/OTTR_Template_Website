@@ -1,0 +1,72 @@
+# Code adapted from https://github.com/JetBrains/intellij-platform-plugin-template/blob/deb171483598ee8a5d7621154db880e87b4db4ef/.github/workflows/template-cleanup.yml
+# by Candace Savonen for this repository.
+
+name: Starting a website
+
+on:
+  push:
+    branches: [ main, staging ]
+  workflow_dispatch:
+
+jobs:
+  # Run cleaning process only if workflow is triggered by not being in the Bookdown template anymore
+  template-cleanup:
+    name: Template Cleanup
+    runs-on: ubuntu-latest
+    if: github.event.repository.name != 'OTTR_Template_Website'
+    steps:
+      - name: checkout repo
+        uses: actions/checkout@v4
+
+      - name: Login as jhudsl-robot
+        run: |
+          git config --global --add safe.directory $GITHUB_WORKSPACE
+          git config --global user.email "itcrtrainingnetwork@gmail.com"
+          git config --global user.name "jhudsl-robot"
+
+      - name: New Course - Set Repository Settings
+        uses: peter-evans/create-issue-from-file@v4
+        with:
+          title: New Course - Set Repository Settings
+          content-filepath: .github/automatic-issues/set-repo-settings.md
+          labels: automated training issue
+
+      # Issue for what needs to be edited
+      - name: New Course - Templates to Edit
+        uses: peter-evans/create-issue-from-file@v4
+        with:
+          title: New Course - Templates to Edit
+          content-filepath: .github/automatic-issues/templates-to-edit.md
+          labels: automated training issue
+
+      # Issue for how to enroll repo for updates
+      - name: New Course - Template Update Enrollment
+        uses: peter-evans/create-issue-from-file@v4
+        with:
+          title: New Course - Template Update Enrollment
+          content-filepath: .github/automatic-issues/update-enrollment.md
+          labels: automated training issue
+
+      # Issue for adding a method of feedback
+      - name: Reminder - Add a method of user feedback
+        uses: peter-evans/create-issue-from-file@v4
+        with:
+          title: Reminder - Add user feedback method
+          content-filepath: .github/automatic-issues/add-feedback-method.md
+          labels: automated training issue
+
+      - name: Get organization name
+        id: get_org_name
+        run: |
+          org_name=$(dirname ${{github.repository}})
+          echo "org_name=$org_name" >> $GITHUB_OUTPUT
+          echo $org_name
+
+      # Issue for adding the course to the jhudsl library
+      - name: Reminder - Add to jhudsl library
+        if: ${{ steps.get_org_name.outputs.org_name == 'jhudsl' }}
+        uses: peter-evans/create-issue-from-file@v4
+        with:
+          title: Reminder - Add to jhudsl library
+          content-filepath: .github/automatic-issues/add-to-library.md
+          labels: automated training issue
