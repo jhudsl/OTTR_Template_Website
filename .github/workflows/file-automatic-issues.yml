@@ -17,7 +17,8 @@ jobs:
     steps:
       - name: checkout repo
         uses: actions/checkout@v4
-
+      
+        # Issue for what repository settings need to be set
       - name: New Course - Set Repository Settings
         uses: peter-evans/create-issue-from-file@v4
         with:
