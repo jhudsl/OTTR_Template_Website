@@ -2,7 +2,6 @@
 For more information on these settings see instructions in [Starting a new OTTR website](https://www.ottrproject.org/getting_started.html#starting-a-new-ottr-course).
 
 - [ ] This website repository is set to `public`.
-- [ ] [Add the `jhudsl-robot` as a collaborator to your repository.](https://www.ottrproject.org/getting_started.html#5_Add_jhudsl-robot_as_a_collaborator).
 
 - [ ] [Github secret `GH_PAT` has been set](https://www.ottrproject.org/getting_started.html#6_Set_up_your_GitHub_personal_access_token)
   `Name`:  `GH_PAT`

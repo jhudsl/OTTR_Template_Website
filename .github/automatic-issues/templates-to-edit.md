@@ -1,19 +1,17 @@
 
-[Follow the instructions here in ottrproject.org](https://www.ottrproject.org/writing_content.html) for details on how to start editing your OTTR website
+[Follow the instructions here in ottrproject.org](https://www.ottrproject.org/editing_website.html) for details on how to start editing your OTTR website.
 
 The following files need to be edited to get this new website started!
 
 ### Files that need edited upon creating a new website.
 
-- [ ] `README.md` - Fill in all the `{ }`.
-- [ ] `index.Rmd` - `title:` should be updated.
-- [ ] `01-intro.Rmd` - replace the information there with information pertinent to this new website.
-- [ ] `02-chapter_of_website.Rmd` - This Rmd has examples of how to set things up, if you don't need it as a reference, it can be deleted.
+- [ ] `README.md` - Fill in the README with the title of the website, a brief description of the website, and any other details that would be useful for anyone who encounters your website.
+- [ ] `index.Rmd` - Update the `title` field. Since this Rmd file serves as the website's landing page, include any information you believe will be beneficial for visitors upon their arrival.
 
-### Files that need to be edited upon adding each new chapter (including upon creating a new website):
 
-- [ ] `_bookdown.yml` - The list of Rmd files that need to be rendered needs to be updated. See [instructions](https://www.ottrproject.org/examples.html#publishing-with-bookdown).
-- [ ] `book.bib` - any citations need to be added. See [instructions](https://www.ottrproject.org/more_features.html#citing-sources).
+### Files that need to be edited upon adding each new page.
+
+- [ ] `_site.yml` - Include the title of your newly created page in the `text` field, and insert the corresponding html file name into the `href` field.
 
 ### Picking a style
 
