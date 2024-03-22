@@ -18,12 +18,6 @@ jobs:
       - name: checkout repo
         uses: actions/checkout@v4
 
-      - name: Login as jhudsl-robot
-        run: |
-          git config --global --add safe.directory $GITHUB_WORKSPACE
-          git config --global user.email "itcrtrainingnetwork@gmail.com"
-          git config --global user.name "jhudsl-robot"
-
       - name: New Course - Set Repository Settings
         uses: peter-evans/create-issue-from-file@v4
         with:
@@ -45,28 +39,4 @@ jobs:
         with:
           title: New Course - Template Update Enrollment
           content-filepath: .github/automatic-issues/update-enrollment.md
-          labels: automated training issue
-
-      # Issue for adding a method of feedback
-      - name: Reminder - Add a method of user feedback
-        uses: peter-evans/create-issue-from-file@v4
-        with:
-          title: Reminder - Add user feedback method
-          content-filepath: .github/automatic-issues/add-feedback-method.md
-          labels: automated training issue
-
-      - name: Get organization name
-        id: get_org_name
-        run: |
-          org_name=$(dirname ${{github.repository}})
-          echo "org_name=$org_name" >> $GITHUB_OUTPUT
-          echo $org_name
-
-      # Issue for adding the course to the jhudsl library
-      - name: Reminder - Add to jhudsl library
-        if: ${{ steps.get_org_name.outputs.org_name == 'jhudsl' }}
-        uses: peter-evans/create-issue-from-file@v4
-        with:
-          title: Reminder - Add to jhudsl library
-          content-filepath: .github/automatic-issues/add-to-library.md
           labels: automated training issue
