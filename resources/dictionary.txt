@@ -9,12 +9,16 @@ GH
 Github
 GitHub
 HTTPS
+ITN
+ITCR
 lightblue
 lightgreen
 OTTR
 Rmd
+repo
 subdir
 th
+tibble
 www
 automations
 Bootstap
