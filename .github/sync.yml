@@ -35,7 +35,7 @@ group:
       cansavvy/cansavvy_website
       fhdsl/metricminer-dashboard
       fhdsl/Intermediate_R
-      fhdsl/anvilPoll2024
+      fhdsl/AnVIL_Poll_2024
 ###ADD NEW REPO HERE following the format above#
 
 ### These are custom groups for syncing -- not all files needs to be synced # will update later
