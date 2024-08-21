@@ -41,8 +41,8 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: ${{needs.yaml-check.outputs.rendering_docker_image}}
-    # Steps represent a sequence of tasks that will be executed as part of the job
-    steps:
+      
+    steps:    
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: checkout
         uses: actions/checkout@v4
