@@ -116,8 +116,8 @@ jobs:
       - name: Website preview for download
         run: zip website-preview.zip docs/* -r
 
-      # Commit the rendered bookdown files
-      - name: Commit rendered bookdown files to preview branch
+      # Commit the website files
+      - name: Commit rendered website files
         id: commit
         run: |
           branch_name='preview-${{ github.event.pull_request.number }}'
