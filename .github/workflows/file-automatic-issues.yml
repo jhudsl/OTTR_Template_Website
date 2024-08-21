@@ -1,0 +1,43 @@
+# Code adapted from https://github.com/JetBrains/intellij-platform-plugin-template/blob/deb171483598ee8a5d7621154db880e87b4db4ef/.github/workflows/template-cleanup.yml
+# by Candace Savonen for this repository.
+
+name: Starting a website
+
+on:
+  push:
+    branches: [ main, staging ]
+  workflow_dispatch:
+
+jobs:
+  # Run cleaning process only if workflow is triggered by not being in the Bookdown template anymore
+  template-cleanup:
+    name: Template Cleanup
+    runs-on: ubuntu-latest
+    if: github.event.repository.name != 'OTTR_Template_Website'
+    steps:
+      - name: checkout repo
+        uses: actions/checkout@v4
+      
+        # Issue for what repository settings need to be set
+      - name: New Course - Set Repository Settings
+        uses: peter-evans/create-issue-from-file@v4
+        with:
+          title: New Course - Set Repository Settings
+          content-filepath: .github/automatic-issues/set-repo-settings.md
+          labels: automated training issue
+
+      # Issue for what needs to be edited
+      - name: New Course - Templates to Edit
+        uses: peter-evans/create-issue-from-file@v4
+        with:
+          title: New Course - Templates to Edit
+          content-filepath: .github/automatic-issues/templates-to-edit.md
+          labels: automated training issue
+
+      # Issue for how to enroll repo for updates
+      - name: New Course - Template Update Enrollment
+        uses: peter-evans/create-issue-from-file@v4
+        with:
+          title: New Course - Template Update Enrollment
+          content-filepath: .github/automatic-issues/update-enrollment.md
+          labels: automated training issue
