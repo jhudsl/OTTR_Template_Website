@@ -13,8 +13,8 @@
 
 <title>Editing</title>
 
-<script src="site_libs/header-attrs-2.10/header-attrs.js"></script>
-<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<script src="site_libs/header-attrs-2.27.1/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
@@ -32,8 +32,8 @@
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
-<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
-<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.4.2/css/all.min.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.4.2/css/v4-shims.min.css" rel="stylesheet" />
 <link rel="shortcut icon" href="resources/images/favicon.ico" />
  <!--- go to https://favicon.io/favicon-converter/ to upload an image to make a new favicon.io. You will need to replace the current favicon.io image with the one in the downloaded directory from the website. The current image is in the resources/images/ directory --->
 
@@ -56,6 +56,7 @@ if (window.hljs) {
   }
 }
 </script>
+
 
 
 
@@ -85,6 +86,9 @@ button.code-folding-btn:focus {
 }
 summary {
   display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
 }
 pre code {
   padding: 0;
@@ -142,11 +146,15 @@ $(document).ready(function () {
     href = "index.html";
   var menuAnchor = $('a[href="' + href + '"]');
 
-  // mark it active
-  menuAnchor.tab('show');
-
-  // if it's got a parent navbar menu mark it active as well
-  menuAnchor.closest('li.dropdown').addClass('active');
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
 
   // Navbar adjustments
   var navHeight = $(".navbar").first().height() + 15;
@@ -175,8 +183,8 @@ $(document).ready(function () {
   border-radius: 4px;
 }
 
-.tabset-dropdown > .nav-tabs > li.active:before {
-  content: "";
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
   font-family: 'Glyphicons Halflings';
   display: inline-block;
   padding: 10px;
@@ -184,16 +192,9 @@ $(document).ready(function () {
 }
 
 .tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
-  content: "&#xe258;";
-  border: none;
-}
-
-.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
-  content: "";
+  content: "\e258";
   font-family: 'Glyphicons Halflings';
-  display: inline-block;
-  padding: 10px;
-  border-right: 1px solid #ddd;
+  border: none;
 }
 
 .tabset-dropdown > .nav-tabs > li.active {
@@ -237,7 +238,7 @@ $(document).ready(function () {
 <div class="navbar navbar-default  navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -288,27 +289,45 @@ $(document).ready(function () {
 </div>
 
 
-<p>Now that your website is alive and hosted, how do you start customizing it to have your content?</p>
-<p>If you already know how to file pull requests, feel free to start making edits as you see fit using some of the structure points we’ve noted below.</p>
-<p>If you are not familiar with pull requests, <a href="https://www.ottrproject.org/editing_website.html">read this guide to get started</a>.</p>
+<p>Now that your website is alive and hosted, how do you start
+customizing it to have your content?</p>
+<p>If you already know how to file pull requests, feel free to start
+making edits as you see fit using some of the structure points we’ve
+noted below.</p>
+<p>If you are not familiar with pull requests, <a
+href="https://www.ottrproject.org/editing_website.html">read this guide
+to get started</a>.</p>
 <div id="title" class="section level2">
 <h2>Title</h2>
-<p>To change the title of the website, modify the <code>name</code> line of the <code>_site.yml</code> file.</p>
-<p><img src="resources/images/title.png" title="Change title" alt="Change title" width="40%" style="display: block; margin: auto;" /></p>
+<p>To change the title of the website, modify the <code>name</code> line
+of the <code>_site.yml</code> file.</p>
+<p><img src="resources/images/title.png" alt="Change title" width="40%" style="display: block; margin: auto;" /></p>
 </div>
 <div id="modifying-pages" class="section level2">
 <h2>Modifying pages</h2>
-<p>Pages are specified in the navigation bar by the lines that say <code>-text:</code> and <code>href:</code> .</p>
-<p>The <code>-text:</code> specifies what the navigation bar will say for that tab.</p>
-<p>The <code>href:</code> specifies which rendered Rmd file to use for that tab, it needs to be the html version of this file.</p>
-<p>The tabs are specified to be aligned to the left (as specified by the <code>left</code> on line 5).</p>
+<p>Pages are specified in the navigation bar by the lines that say
+<code>-text:</code> and <code>href:</code> .</p>
+<p>The <code>-text:</code> specifies what the navigation bar will say
+for that tab.</p>
+<p>The <code>href:</code> specifies which rendered Rmd file to use for
+that tab, it needs to be the html version of this file.</p>
+<p>The tabs are specified to be aligned to the left (as specified by the
+<code>left</code> on line 5).</p>
 <p>The tabs will appear in the order listed.</p>
-<p>You can also add icons to these tabs using <a href="https://fontawesome.com/">font awesome</a> as is shown for the contact page on line 18.</p>
-<p><img src="resources/images/page_modification.png" title="Page modification" alt="Page modification" width="40%" style="display: block; margin: auto;" /></p>
-<p>Other icon options include <a href="https://www.w3schools.com/bootstrap/bootstrap_ref_comp_glyphs.asp">Bootstap glyphicons</a> or <a href="https://ionic.io/ionicons">ion icons</a>. Note that <strong>not all icons will work</strong> because they are not all set up with the packages that make rendering the website possible, so this may require some trial and error. Here is an example of how you would use all of these icon options to add more:</p>
-<p><img src="resources/images/more_icons.png" title="more icon options" alt="more icon options" width="40%" style="display: block; margin: auto;" /></p>
+<p>You can also add icons to these tabs using <a
+href="https://fontawesome.com/">font awesome</a> as is shown for the
+contact page on line 18.</p>
+<p><img src="resources/images/page_modification.png" alt="Page modification" width="40%" style="display: block; margin: auto;" /></p>
+<p>Other icon options include <a
+href="https://www.w3schools.com/bootstrap/bootstrap_ref_comp_glyphs.asp">Bootstap
+glyphicons</a> or <a href="https://ionic.io/ionicons">ion icons</a>.
+Note that <strong>not all icons will work</strong> because they are not
+all set up with the packages that make rendering the website possible,
+so this may require some trial and error. Here is an example of how you
+would use all of these icon options to add more:</p>
+<p><img src="resources/images/more_icons.png" alt="more icon options" width="40%" style="display: block; margin: auto;" /></p>
 <p>This would result in a navigation bar with these icons:</p>
-<p><img src="resources/images/more_icons_result.png" title="more icon options" alt="more icon options" width="70%" style="display: block; margin: auto;" /></p>
+<p><img src="resources/images/more_icons_result.png" alt="more icon options" width="70%" style="display: block; margin: auto;" /></p>
 </div>
 
 

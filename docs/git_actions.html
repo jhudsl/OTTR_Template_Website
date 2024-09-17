@@ -13,8 +13,8 @@
 
 <title>Git Actions</title>
 
-<script src="site_libs/header-attrs-2.10/header-attrs.js"></script>
-<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<script src="site_libs/header-attrs-2.27.1/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
@@ -32,8 +32,8 @@
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
-<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
-<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.4.2/css/all.min.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.4.2/css/v4-shims.min.css" rel="stylesheet" />
 <link rel="shortcut icon" href="resources/images/favicon.ico" />
  <!--- go to https://favicon.io/favicon-converter/ to upload an image to make a new favicon.io. You will need to replace the current favicon.io image with the one in the downloaded directory from the website. The current image is in the resources/images/ directory --->
 
@@ -56,6 +56,7 @@ if (window.hljs) {
   }
 }
 </script>
+
 
 
 
@@ -85,6 +86,9 @@ button.code-folding-btn:focus {
 }
 summary {
   display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
 }
 pre code {
   padding: 0;
@@ -142,11 +146,15 @@ $(document).ready(function () {
     href = "index.html";
   var menuAnchor = $('a[href="' + href + '"]');
 
-  // mark it active
-  menuAnchor.tab('show');
-
-  // if it's got a parent navbar menu mark it active as well
-  menuAnchor.closest('li.dropdown').addClass('active');
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
 
   // Navbar adjustments
   var navHeight = $(".navbar").first().height() + 15;
@@ -175,8 +183,8 @@ $(document).ready(function () {
   border-radius: 4px;
 }
 
-.tabset-dropdown > .nav-tabs > li.active:before {
-  content: "";
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
   font-family: 'Glyphicons Halflings';
   display: inline-block;
   padding: 10px;
@@ -184,16 +192,9 @@ $(document).ready(function () {
 }
 
 .tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
-  content: "&#xe258;";
-  border: none;
-}
-
-.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
-  content: "";
+  content: "\e258";
   font-family: 'Glyphicons Halflings';
-  display: inline-block;
-  padding: 10px;
-  border-right: 1px solid #ddd;
+  border: none;
 }
 
 .tabset-dropdown > .nav-tabs > li.active {
@@ -237,7 +238,7 @@ $(document).ready(function () {
 <div class="navbar navbar-default  navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -289,38 +290,63 @@ $(document).ready(function () {
 
 
 <p>We have set up several checks for website content edits.</p>
-<p>When you create a pull request, you will see something like this if everything is successful. You can click on the <code>preview of website here</code> link to see a preview. Please note that some features may not be possible to see in the preview. For example, icons may only show up as a box.</p>
-<p><img src="resources/images/checks.png" title="pull request checks" alt="pull request checks" width="70%" style="display: block; margin: auto;" /></p>
+<p>When you create a pull request, you will see something like this if
+everything is successful. You can click on the
+<code>preview of website here</code> link to see a preview. Please note
+that some features may not be possible to see in the preview. For
+example, icons may only show up as a box.</p>
+<p><img src="resources/images/checks.png" alt="pull request checks" width="70%" style="display: block; margin: auto;" /></p>
 <div id="rendering-action" class="section level2">
 <h2>Rendering Action</h2>
 <p>If the rendering action fails, you will see something like this:</p>
-<p><img src="resources/images/render_fail.png" title="render issue pull request image" alt="render issue pull request image" width="80%" style="display: block; margin: auto;" /></p>
-<p>If you click on where it says <code>Details</code> on the far right, you will be taken to more information about what may have gone wrong.</p>
-<p><img src="resources/images/render_fail2.png" title="render issue pull request image" alt="render issue pull request image" width="80%" style="display: block; margin: auto;" /></p>
-<p>For example, we can see that an R object was not found in one of the files. You could identify which file by scrolling up.</p>
-<p><img src="resources/images/render_fail_details.png" title="render issue pull request image" alt="render issue pull request image" width="80%" style="display: block; margin: auto;" /></p>
+<p><img src="resources/images/render_fail.png" alt="render issue pull request image" width="80%" style="display: block; margin: auto;" /></p>
+<p>If you click on where it says <code>Details</code> on the far right,
+you will be taken to more information about what may have gone
+wrong.</p>
+<p><img src="resources/images/render_fail2.png" alt="render issue pull request image" width="80%" style="display: block; margin: auto;" /></p>
+<p>For example, we can see that an R object was not found in one of the
+files. You could identify which file by scrolling up.</p>
+<p><img src="resources/images/render_fail_details.png" alt="render issue pull request image" width="80%" style="display: block; margin: auto;" /></p>
 </div>
 <div id="spelling-and-style-action" class="section level2">
 <h2>Spelling and Style Action</h2>
-<p>You may find that you have spelling errors if you get the following message from your pull request (PR):</p>
-<p><img src="resources/images/spelling.png" title="spelling issue pull request image" alt="spelling issue pull request image" width="80%" style="display: block; margin: auto;" /></p>
-<p>If this happens, click the <code>Download the errors here.</code> link. This will take you to a table with words that the check thought were misspelled, as well as what file they occurred in and the lines in that file.</p>
-<p>Add words that are <strong>not</strong> actually misspelled to the <code>dictionary.txt</code> file located in the <code>resources</code> directory. It’s a good idea to try to keep this in alphabetical order.</p>
-<p>For words that are indeed misspelled, fix the errors and push your changes to your pull request.</p>
-<p>You should then see that your pull request has a different message that tells you that you have no spelling errors.</p>
+<p>You may find that you have spelling errors if you get the following
+message from your pull request (PR):</p>
+<p><img src="resources/images/spelling.png" alt="spelling issue pull request image" width="80%" style="display: block; margin: auto;" /></p>
+<p>If this happens, click the <code>Download the errors here.</code>
+link. This will take you to a table with words that the check thought
+were misspelled, as well as what file they occurred in and the lines in
+that file.</p>
+<p>Add words that are <strong>not</strong> actually misspelled to the
+<code>dictionary.txt</code> file located in the <code>resources</code>
+directory. It’s a good idea to try to keep this in alphabetical
+order.</p>
+<p>For words that are indeed misspelled, fix the errors and push your
+changes to your pull request.</p>
+<p>You should then see that your pull request has a different message
+that tells you that you have no spelling errors.</p>
 </div>
 <div id="url-check" class="section level2">
 <h2>URL Check</h2>
-<p>You may find that you have broken URLs. If so, you will get this message when you create a Pull Request.</p>
-<p><img src="resources/images/url_check.png" title="URL issue pull request image" alt="URL issue pull request image" width="80%" style="display: block; margin: auto;" /> You can click on the <code>Download the errors here</code> link to see a document with a list of broken URLs and what files they are located in, like this:</p>
-<p><img src="resources/images/urls.png" title="broken url list" alt="broken url list" width="80%" style="display: block; margin: auto;" /></p>
-<p>Here we can see that there are two URLs that are broken in the <code>git_actions.Rmd</code> file.</p>
+<p>You may find that you have broken URLs. If so, you will get this
+message when you create a Pull Request.</p>
+<p><img src="resources/images/url_check.png" alt="URL issue pull request image" width="80%" style="display: block; margin: auto;" />
+You can click on the <code>Download the errors here</code> link to see a
+document with a list of broken URLs and what files they are located in,
+like this:</p>
+<p><img src="resources/images/urls.png" alt="broken url list" width="80%" style="display: block; margin: auto;" /></p>
+<p>Here we can see that there are two URLs that are broken in the
+<code>git_actions.Rmd</code> file.</p>
 </div>
 <div id="completing-a-pull-request" class="section level2">
 <h2>Completing a Pull Request</h2>
-<p>Once all the Git Action checks pass, you can merge your pull request to your main branch for your website.</p>
-<p><img src="resources/images/checks2.png" title="finishing a pull request" alt="finishing a pull request" width="80%" style="display: block; margin: auto;" /></p>
-<p>If you are only working on this yourself without others to review your pull request, you can click the <code>Merge without waiting for requirements to be met</code> box, so that you can click the <code>Merge pull request</code> button.</p>
+<p>Once all the Git Action checks pass, you can merge your pull request
+to your main branch for your website.</p>
+<p><img src="resources/images/checks2.png" alt="finishing a pull request" width="80%" style="display: block; margin: auto;" /></p>
+<p>If you are only working on this yourself without others to review
+your pull request, you can click the
+<code>Merge without waiting for requirements to be met</code> box, so
+that you can click the <code>Merge pull request</code> button.</p>
 </div>
 
 

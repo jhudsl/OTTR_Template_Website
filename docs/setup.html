@@ -13,8 +13,8 @@
 
 <title>Setup</title>
 
-<script src="site_libs/header-attrs-2.10/header-attrs.js"></script>
-<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<script src="site_libs/header-attrs-2.27.1/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
@@ -32,8 +32,8 @@
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
-<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
-<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.4.2/css/all.min.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.4.2/css/v4-shims.min.css" rel="stylesheet" />
 <link rel="shortcut icon" href="resources/images/favicon.ico" />
  <!--- go to https://favicon.io/favicon-converter/ to upload an image to make a new favicon.io. You will need to replace the current favicon.io image with the one in the downloaded directory from the website. The current image is in the resources/images/ directory --->
 
@@ -56,6 +56,7 @@ if (window.hljs) {
   }
 }
 </script>
+
 
 
 
@@ -85,6 +86,9 @@ button.code-folding-btn:focus {
 }
 summary {
   display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
 }
 pre code {
   padding: 0;
@@ -142,11 +146,15 @@ $(document).ready(function () {
     href = "index.html";
   var menuAnchor = $('a[href="' + href + '"]');
 
-  // mark it active
-  menuAnchor.tab('show');
-
-  // if it's got a parent navbar menu mark it active as well
-  menuAnchor.closest('li.dropdown').addClass('active');
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
 
   // Navbar adjustments
   var navHeight = $(".navbar").first().height() + 15;
@@ -175,8 +183,8 @@ $(document).ready(function () {
   border-radius: 4px;
 }
 
-.tabset-dropdown > .nav-tabs > li.active:before {
-  content: "";
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
   font-family: 'Glyphicons Halflings';
   display: inline-block;
   padding: 10px;
@@ -184,16 +192,9 @@ $(document).ready(function () {
 }
 
 .tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
-  content: "&#xe258;";
-  border: none;
-}
-
-.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
-  content: "";
+  content: "\e258";
   font-family: 'Glyphicons Halflings';
-  display: inline-block;
-  padding: 10px;
-  border-right: 1px solid #ddd;
+  border: none;
 }
 
 .tabset-dropdown > .nav-tabs > li.active {
@@ -237,7 +238,7 @@ $(document).ready(function () {
 <div class="navbar navbar-default  navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -290,60 +291,96 @@ $(document).ready(function () {
 
 <div id="getting-started" class="section level3">
 <h3>Getting started</h3>
-<p>Create your repository by clicking on the <code>Use this Template</code> button at <a href="https://github.com/jhudsl/OTTR_Template_Website">OTTR_Template_Website repository</a></p>
+<p>Create your repository by clicking on the
+<code>Use this Template</code> button at <a
+href="https://github.com/jhudsl/OTTR_Template_Website">OTTR_Template_Website
+repository</a></p>
 <p><img src="resources/images/create-repo.png" /></p>
 <p>You’ll need to make your repository <code>public</code>.</p>
 </div>
 <div id="set-your-gh_pat" class="section level3">
 <h3>Set your GH_PAT</h3>
-<p>To enable the GitHub actions, your repository needs to be setup in a specific way.</p>
-<p>For OTTR GitHub actions to run, they need to have credentials through a personal access token.</p>
+<p>To enable the GitHub actions, your repository needs to be setup in a
+specific way.</p>
+<p>For OTTR GitHub actions to run, they need to have credentials through
+a personal access token.</p>
 <ol style="list-style-type: decimal">
-<li>Set up your own personal access token <a href="https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token">following these instructions</a> - but create a <strong>classic token</strong>. Keep this personal access token handy for the next step. When you get to the permissions page, check the box that says <code>repo</code> and select all that is underneath that header. No other permissions are necessary.</li>
+<li>Set up your own personal access token <a
+href="https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token">following
+these instructions</a> - but create a <strong>classic token</strong>.
+Keep this personal access token handy for the next step. When you get to
+the permissions page, check the box that says <code>repo</code> and
+select all that is underneath that header. No other permissions are
+necessary.</li>
 </ol>
 <details>
 <summary>
-Click here for more detailed instructions. The instructions for this step may change with updates to GitHub.
+Click here for more detailed instructions. The instructions for this
+step may change with updates to GitHub.
 </summary>
-<p>First, go to your username settings, by clicking on your user icon (upper right corner) and scrolling down to settings.</p>
-<p><img src="resources/images/usersettings.png" title="User settings" alt="User settings" width="20%" style="display: block; margin: auto;" /></p>
-<p>Next, scroll all the way down on the far right menu to “Developer Settings”.</p>
-<p><img src="resources/images/developer_settings.png" title="User settings" alt="User settings" width="80%" style="display: block; margin: auto;" /></p>
+<p>First, go to your username settings, by clicking on your user icon
+(upper right corner) and scrolling down to settings.</p>
+<p><img src="resources/images/usersettings.png" alt="User settings" width="20%" style="display: block; margin: auto;" /></p>
+<p>Next, scroll all the way down on the far right menu to “Developer
+Settings”.</p>
+<p><img src="resources/images/developer_settings.png" alt="User settings" width="80%" style="display: block; margin: auto;" /></p>
 <p>Then select “Personal Access Tokens” and “Tokens (classic)”</p>
-<p><img src="resources/images/classic_tokens.png" title="classic tokens" alt="classic tokens" width="40%" style="display: block; margin: auto;" /></p>
-<p>Then click “Generate new token” and confirm that you want classic.</p>
-<p><img src="resources/images/generate_classic.png" title="generate classic token" alt="generate classic token" width="80%" style="display: block; margin: auto;" /></p>
-<p>Finally, add a name select all the repo scopes and scroll down to the green button to generate the token. Copy this somewhere safe to then paste into your repository settings.</p>
-<p><img src="resources/images/set_up_token.png" title="set up token" alt="set up token" width="80%" style="display: block; margin: auto;" /></p>
+<p><img src="resources/images/classic_tokens.png" alt="classic tokens" width="40%" style="display: block; margin: auto;" /></p>
+<p>Then click “Generate new token” and confirm that you want
+classic.</p>
+<p><img src="resources/images/generate_classic.png" alt="generate classic token" width="80%" style="display: block; margin: auto;" /></p>
+<p>Finally, add a name select all the repo scopes and scroll down to the
+green button to generate the token. Copy this somewhere safe to then
+paste into your repository settings.</p>
+<p><img src="resources/images/set_up_token.png" alt="set up token" width="80%" style="display: block; margin: auto;" /></p>
 </details>
 <ol start="2" style="list-style-type: decimal">
-<li>In your new OTTR_Template_Website derived repository, go to Settings &gt; Secrets and variables &gt; Actions. Click <code>New Repository Secret</code>.</li>
+<li>In your new OTTR_Template_Website derived repository, go to Settings
+&gt; Secrets and variables &gt; Actions. Click
+<code>New Repository Secret</code>.</li>
 </ol>
-<p><img src="resources/images/repo_action_token.png" title="classic tokens" alt="classic tokens" width="80%" style="display: block; margin: auto;" /></p>
-<p><img src="resources/images/gh_pat_set_up.png" title="new repository secret" alt="new repository secret" width="80%" style="display: block; margin: auto;" /></p>
-<p>In the window opened, name this new secret <code>GH_PAT</code> and paste the personal access token in the box below. (Note that the name <code>GH_PAT</code> is specific to how OTTR works and other secret names cannot be used and for OTTR to still work).</p>
+<p><img src="resources/images/repo_action_token.png" alt="classic tokens" width="80%" style="display: block; margin: auto;" /></p>
+<p><img src="resources/images/gh_pat_set_up.png" alt="new repository secret" width="80%" style="display: block; margin: auto;" /></p>
+<p>In the window opened, name this new secret <code>GH_PAT</code> and
+paste the personal access token in the box below. (Note that the name
+<code>GH_PAT</code> is specific to how OTTR works and other secret names
+cannot be used and for OTTR to still work).</p>
 <p>Click the green button to add the secret.</p>
-<p><img src="resources/images/setting_gh_pat.png" title="Clicking on settings" alt="Clicking on settings" width="80%" style="display: block; margin: auto;" /></p>
+<p><img src="resources/images/setting_gh_pat.png" alt="Clicking on settings" width="80%" style="display: block; margin: auto;" /></p>
 </div>
 <div id="allow-github-actions" class="section level3">
 <h3>Allow GitHub Actions</h3>
-<p>Go to the settings menu for your repository that you created from the template. This should be located at the top of GitHub on the right side.</p>
-<p>Scroll down to the “Actions” button and click it, then click “General”. <img src="resources/images/actions.png" title="allowing workflows" alt="allowing workflows" width="40%" style="display: block; margin: auto;" /></p>
-<p><img src="resources/images/general.png" title="allowing workflows" alt="allowing workflows" width="80%" style="display: block; margin: auto;" /></p>
-<p>Scroll down to the workflow permissions section and select “Read and write permissions”, then click “Allow GitHub actions to create and approve pull requests.</p>
+<p>Go to the settings menu for your repository that you created from the
+template. This should be located at the top of GitHub on the right
+side.</p>
+<p>Scroll down to the “Actions” button and click it, then click
+“General”.
+<img src="resources/images/actions.png" alt="allowing workflows" width="40%" style="display: block; margin: auto;" /></p>
+<p><img src="resources/images/general.png" alt="allowing workflows" width="80%" style="display: block; margin: auto;" /></p>
+<p>Scroll down to the workflow permissions section and select “Read and
+write permissions”, then click “Allow GitHub actions to create and
+approve pull requests.</p>
 <p>Finally, click “save”.</p>
-<p><img src="resources/images/workflows.png" title="allowing workflows" alt="allowing workflows" width="80%" style="display: block; margin: auto;" /></p>
+<p><img src="resources/images/workflows.png" alt="allowing workflows" width="80%" style="display: block; margin: auto;" /></p>
 </div>
 <div id="protect-branches" class="section level3">
 <h3>Protect branches</h3>
-<p>Although this isn’t entirely required, its strongly recommended that you use these settings to protect your <code>main</code> branches.</p>
+<p>Although this isn’t entirely required, its strongly recommended that
+you use these settings to protect your <code>main</code> branches.</p>
 <p>Click on settings in the far upper right corner:</p>
-<p><img src="resources/images/settings.png" title="Clicking on settings" alt="Clicking on settings" width="80%" style="display: block; margin: auto;" /> Click on branches:</p>
-<p><img src="resources/images/branches.png" title="Clicking on settings" alt="Clicking on settings" width="80%" style="display: block; margin: auto;" /> Click the add rule button.</p>
-<p><img src="resources/images/add_rule.png" title="Adding rule" alt="Adding rule" width="608" style="display: block; margin: auto;" /> Type “main” as the branch name pattern:</p>
-<p><img src="resources/images/main_branch.png" title="adding main branch rule" alt="adding main branch rule" width="80%" style="display: block; margin: auto;" /> Click on the following boxes to require pull requests before merging:</p>
-<p><img src="resources/images/branch_rule.png" title="modify branch rules" alt="modify branch rules" width="80%" style="display: block; margin: auto;" /></p>
-<p>Note that if you have admin privileges on this repository, you will likely still be able to override these branch protections so use caution when git pushing!</p>
+<p><img src="resources/images/settings.png" alt="Clicking on settings" width="80%" style="display: block; margin: auto;" />
+Click on branches:</p>
+<p><img src="resources/images/branches.png" alt="Clicking on settings" width="80%" style="display: block; margin: auto;" />
+Click the add rule button.</p>
+<p><img src="resources/images/add_rule.png" alt="Adding rule" width="608" style="display: block; margin: auto;" />
+Type “main” as the branch name pattern:</p>
+<p><img src="resources/images/main_branch.png" alt="adding main branch rule" width="80%" style="display: block; margin: auto;" />
+Click on the following boxes to require pull requests before
+merging:</p>
+<p><img src="resources/images/branch_rule.png" alt="modify branch rules" width="80%" style="display: block; margin: auto;" /></p>
+<p>Note that if you have admin privileges on this repository, you will
+likely still be able to override these branch protections so use caution
+when git pushing!</p>
 </div>
 
 
