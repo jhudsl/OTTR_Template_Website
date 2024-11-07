@@ -17,7 +17,62 @@ jobs:
     steps:
       - name: checkout repo
         uses: actions/checkout@v4
-      
+
+      - name: Login as github actions bot
+        run: |
+          git config --global --add safe.directory $GITHUB_WORKSPACE
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+
+      # Delete Template-specific files that aren't needed for new websites
+      # Cleanup Template-specific bits
+      - name: Cleanup
+        run: |
+        rm -rf \
+          .github/workflows/file-automatic-issues.yml \
+          .github/ISSUE_TEMPLATE/new-website-add-to-sync.md \
+          .github/ISSUE_TEMPLATE/update-website-info-for-sync.md \
+          .github/ISSUE_TEMPLATE/website-template-feature-request.md \
+          .github/ISSUE_TEMPLATE/website-template-problem-report.md \
+          .github/PULL_REQUEST_TEMPLATE/add_to_sync_template.md \
+          .github/sync.yml \
+          .github/workflows/send-updates.yml \
+          .github/workflows/test-send-updates.yml \
+          docs/*.html
+
+      # Commit deleted files
+      - name: Commit deleted files
+        id: commit_it
+        run: |
+          git config --global --add safe.directory $GITHUB_WORKSPACE
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git add .
+          git commit -m "Template cleanup"
+          pushed_it=true
+          git push || pushed_it=false
+          echo "pushed_it=$pushed_it" >> $GITHUB_OUTPUT
+
+        # If main is already protected, then file a PR
+      - name: Create a PR with deleted files
+        if: steps.commit_it.outputs.pushed_it == 'false'
+        uses: peter-evans/create-pull-request@v3
+        id: pr
+        with:
+          commit-message: Delete unnecessary files
+          signoff: false
+          branch: auto_copy_rendered_files
+          delete-branch: true
+          title: 'Automatic course set up'
+          body: |
+            ### Description:
+             This PR was initiated by the github actions. It helps set up this repository to be ready to create your website.
+             It deletes some remnant files you don't need for your website but were used when this was a template.
+          labels: |
+            automated
+          reviewers: $GITHUB_ACTOR
+          token: ${{secrets.GH_PAT}}
+
         # Issue for what repository settings need to be set
       - name: New Course - Set Repository Settings
         uses: peter-evans/create-issue-from-file@v4
