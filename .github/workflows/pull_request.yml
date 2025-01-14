@@ -1,5 +1,5 @@
 # Candace Savonen Dec 2021
-# Updated Aug 2024
+# Updated Jan 2025
 name: Pull Request
 
 on:
@@ -58,7 +58,8 @@ jobs:
     with:
       check_type: spelling
       error_min: 3
-      gh_pat: secrets.GH_PAT
+    secrets:
+      gh_pat: ${{ secrets.GH_PAT }}
 
   url-check:
     name: Check URLs
@@ -68,7 +69,9 @@ jobs:
     with:
       check_type: urls
       error_min: 0
-      gh_pat: secrets.GH_PAT
+    secrets:
+      gh_pat: ${{ secrets.GH_PAT }}
+      
 ############################# Readability Report ###################################
 
   readability-report:
