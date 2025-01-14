@@ -1,5 +1,5 @@
 # Candace Savonen Dec 2021
-# Updated Aug 2024
+# Updated Jan 2025
 name: Pull Request
 
 on:
@@ -47,6 +47,7 @@ jobs:
       toggle_url_check: "${{ env.URL_CHECKER }}"
       toggle_render_preview: "${{ env.RENDER_PREVIEW }}"
       rendering_docker_image: "${{ env.RENDERING_DOCKER_IMAGE }}"
+      toggle_readability: "${{ env.READABILITY_REPORT }}"
 
 ########################## Make the error reports ##############################
   spell-check:
@@ -57,7 +58,8 @@ jobs:
     with:
       check_type: spelling
       error_min: 3
-      gh_pat: secrets.GH_PAT
+    secrets:
+      gh_pat: ${{ secrets.GH_PAT }}
 
   url-check:
     name: Check URLs
@@ -67,8 +69,30 @@ jobs:
     with:
       check_type: urls
       error_min: 0
-      gh_pat: secrets.GH_PAT
+    secrets:
+      gh_pat: ${{ secrets.GH_PAT }}
+      
+############################# Readability Report ###################################
 
+  readability-report:
+    name: Readability report
+    needs: yaml-check
+    runs-on: ubuntu-latest
+    if: ${{needs.yaml-check.outputs.toggle_readability == 'yes'}}
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Readability report
+        uses: Rebilly/lexi@v2
+        with:
+          github-token: ${{ secrets.GH_PAT }}
+          glob: '**/*.md'
+          
+###################### Render preview of website ##################
   render-preview:
     name: Render preview
     needs: yaml-check
