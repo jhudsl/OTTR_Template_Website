@@ -28,7 +28,7 @@ jobs:
       # Cleanup Template-specific bits
       - name: Cleanup
         run: |
-        rm -rf \
+          rm -rf \
           .github/workflows/file-automatic-issues.yml \
           .github/ISSUE_TEMPLATE/new-website-add-to-sync.md \
           .github/ISSUE_TEMPLATE/update-website-info-for-sync.md \
